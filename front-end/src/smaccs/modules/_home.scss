@@ -1,0 +1,22 @@
+.hero {
+  background-color: $greybox;
+  height: 30vh;
+  width: 100%;
+}
+
+.tag {
+  height: 25vh;
+  width: 75%;
+  margin: 2rem 0 0 2rem;
+  background-color: $greybox;
+  padding: 0.5rem 1rem;
+  &-text {
+    font-size: 1.3rem;
+    margin: 0.5rem;
+  }
+}
+
+.cta {
+  width: 100%;
+  margin-top: 3rem;
+}

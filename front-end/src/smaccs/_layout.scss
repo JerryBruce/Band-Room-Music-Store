@@ -1,0 +1,24 @@
+.flex {
+  display: flex;
+}
+
+.center_space {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.center-space-a {
+  align-items: center;
+  justify-content: space-around;
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.abs-bot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
