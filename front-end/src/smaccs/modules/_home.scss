@@ -5,13 +5,13 @@
   background-image: url(../../images/horn-players.jpg);
   background-size: cover;
 }
-
+.home-body {
+  height: 42vh;
+}
 .tag {
-  height: 25vh;
   width: 75%;
-  margin: 2rem 0 0 2rem;
-  background-color: $greybox;
-  padding: 0.5rem 1rem;
+  margin-right: 20%;
+
   &-text {
     font-size: 1.3rem;
     margin: 0.5rem;
@@ -20,5 +20,5 @@
 
 .cta {
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 3%;
 }
