@@ -1,7 +1,7 @@
 const express = require('express');
 const Item = require('../models/Item');
 
-const  router = express.Router;
+const  router = express.Router();
 
 router.post('/items', async (req, res) => {
     const item = new Item({
