@@ -41,6 +41,17 @@
   justify-content: space-around;
 }
 
+.f-co-c-sb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.as-c {
+  align-self: center;
+}
+
 .if {
   display: inline-flex;
 }

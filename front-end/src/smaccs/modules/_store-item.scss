@@ -1,0 +1,21 @@
+.store {
+  height: 60vh;
+  width: 100%;
+}
+
+.store-item {
+  height: 30%;
+  width: 30%;
+  background-color: $greybox;
+  margin: 0.5rem;
+  &-image {
+    height: 75%;
+    width: 90%;
+    background-color: white;
+  }
+  &-desc {
+    height: 15%;
+    width: 90%;
+    background-color: black;
+  }
+}
