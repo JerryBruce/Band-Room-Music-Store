@@ -11,6 +11,11 @@ const itemSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    series: {
+        type: String,
+        required: true,
+        trim: true
+    },
     stock: {
         type: Number,
         required: true
