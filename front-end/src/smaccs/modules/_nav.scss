@@ -14,12 +14,12 @@
       display: inline-block;
     }
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: -0.8rem;
     }
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       top: 0.8rem;
     }
@@ -61,4 +61,5 @@
   visibility: visible;
   opacity: 1;
   transition: 0.3s;
+  z-index: 100;
 }

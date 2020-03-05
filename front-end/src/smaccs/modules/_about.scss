@@ -1,0 +1,26 @@
+.about {
+  height: 70vh;
+  &-header {
+    font-size: 3rem;
+    margin-top: 3rem;
+  }
+  &-body {
+    width: 70%;
+    margin-top: 3rem;
+    position: relative;
+  }
+  &-image {
+    height: 10rem;
+    width: 8rem;
+    flex-shrink: 0;
+    background-color: white;
+    background-image: url(../../images/portrait.jpg);
+    background-size: cover;
+    background-position: center;
+    margin: 0 0.3rem 0.3rem 0;
+  }
+  &-text {
+    font-size: 1.2rem;
+    flex-wrap: wrap;
+  }
+}

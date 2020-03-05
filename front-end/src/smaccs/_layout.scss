@@ -26,7 +26,35 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.f-co-c-c {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.f-co-c-sa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-around;
+}
+
+.if {
+  display: inline-flex;
+}
+
+.ib {
+  display: inline-block;
+}
+
+.flo-r {
+  float: right;
+}
+
+.flo-l {
+  float: left;
 }
 
 .a-b-l {

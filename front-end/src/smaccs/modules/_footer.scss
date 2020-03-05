@@ -12,7 +12,7 @@
     height: 7rem;
     width: 7rem;
     border-radius: 50%;
-    background-image: url('../../images/portrait.jpg');
+    background-image: url("../../images/portrait.jpg");
     background-size: cover;
     background-position: center;
   }
@@ -28,7 +28,7 @@
   padding: 0.2rem;
 }
 
-.contact {
+.phone-email {
   display: flex;
   flex-direction: column;
   margin-left: 1rem;
