@@ -24,7 +24,7 @@ export class Footer extends Component {
             Give Us a Call <br /> (900)900-9000
           </div>
           <div className="contact-email">
-            Send Us an Email <br /> Email@Email.com
+            Send Us an Email <br /> Lakewaymusic@Yahoo.com
           </div>
         </div>
         <div className="links-container f-c-c">
