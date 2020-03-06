@@ -8,7 +8,6 @@ const itemSchema = new mongoose.Schema({
     },
     brand: {
         type: String,
-        required: true,
         trim: true
     },
     series: {
@@ -29,15 +28,13 @@ const itemSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    cost: {
-        rent: {
-            type: Number,
-            required: true
-        },
-        buy: {
-            type: Number,
-            required: false
-        }
+    rent: {
+        type: Number,
+        required: true
+    },
+    buy: {
+        type: Number,
+        required: false
     }
 })
 
