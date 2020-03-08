@@ -1,21 +1,30 @@
 .store {
-  height: 60vh;
   width: 100%;
+  margin-bottom: 20vh;
+  &-search,
+  &-page {
+    height: 15vh;
+    background-color: $greybox;
+  }
 }
 
 .store-item {
-  height: 30%;
+  height: 12.5rem;
   width: 30%;
   background-color: $greybox;
   margin: 0.5rem;
-  &-image {
-    height: 75%;
-    width: 90%;
+  &-container {
     background-color: white;
+    height: 75%;
+    width: 100%;
+    margin: auto;
+    margin-top: 0;
+  }
+  &-image {
+    height: 100%;
+    width: 100%;
   }
   &-desc {
-    height: 15%;
-    width: 90%;
     background-color: black;
   }
 }
