@@ -48,12 +48,20 @@
   justify-content: space-between;
 }
 
+.fw {
+  flex-wrap: wrap;
+}
+
 .as-c {
   align-self: center;
 }
 
 .js-c {
   justify-self: center;
+}
+
+.i {
+  display: inline;
 }
 
 .if {
