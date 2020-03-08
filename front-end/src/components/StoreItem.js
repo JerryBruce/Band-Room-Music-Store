@@ -11,7 +11,11 @@ const StoreItem = props => {
         <div className='store-item-details'>
           <div className='store-item-name'>Saxophone</div>
           <div className='store-item-desc'>{image.alt_description}</div>
-          <div className='store-item-price'>As Low as 49.95/Month!</div>
+          <div className='store-item-price'>
+            As Low as
+            <br />
+            49.95/Month!
+          </div>
           <button className='store-item-buy'>Buy Now!</button>
         </div>
       </div>
