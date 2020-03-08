@@ -25,4 +25,50 @@ router.get('/items', async (req, res) => {
     }
 })
 
+router.get('/items/:id', async (req,res) => {
+    const _id = req.params.id
+
+    try {
+        const item = await Item.findOne({_id})
+        if(!item) {
+            return res.status(400).send()
+        }
+
+        res.send(item)
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
+router.patch('/items/:id', async (req, res) => {
+    const updates = Object.keys(req.body)
+
+    try {
+        const item = await Item.findOne({ _id: req.params.id })
+
+        if(!item) {
+            return res.status(400).send()
+        }
+        updates.forEach((update) => item[update] = req.body[update])
+        await item.save()
+        res.send(item)
+
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
+router.delete('/items/:id', async (req, res) => {
+    try {
+        const item = await Item.findOneAndDelete({ _id: req.params.id })
+        if(!item) {
+            return res.status(404).send()
+        }
+
+        res.send(`${item.name} has been deleted.`)
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
 module.exports = router
