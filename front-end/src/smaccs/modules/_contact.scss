@@ -1,3 +1,8 @@
 .contact {
-  height: 70vh;
+  height: 71vh;
+  width: 80%;
+  margin: auto;
+  &-heading {
+    text-align: center;
+  }
 }

@@ -8,15 +8,15 @@ import TW from '../images/twitter.svg';
 export class Footer extends Component {
   render(props) {
     return (
-      <div className='footer fix-b-l f-c-sa'>
+      <div className='footer  f-c-sa'>
         <div className='footer-circles f-c-c'>
           <div className='footer-img '>
             <img src='' alt='' className='profile' />
           </div>
           <div className='media-icons f-c-sb'>
-            <MediaIcon icon={FB} />
-            <MediaIcon icon={IG} />
-            <MediaIcon icon={TW} />
+            <MediaIcon icon={FB} url='https://www.facebook.com' />
+            <MediaIcon icon={IG} url='https://www.instagram.com' />
+            <MediaIcon icon={TW} url='https://www.twitter.com' />
           </div>
         </div>
         <div className='phone-email'>

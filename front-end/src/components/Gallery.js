@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export class Gallery extends Component {
   render() {
-    return <div>Hello From the Gallery</div>;
+    return <div className='gallery'>Hello From the Gallery</div>;
   }
 }
 
