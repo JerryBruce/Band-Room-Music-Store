@@ -6,7 +6,7 @@ import Home from "./Home";
 import Footer from "./Footer";
 import About from "./About";
 import Contact from "./Contact";
-import Store from "./Store";
+import Store from "./Store/Store";
 import Gallery from "./Gallery";
 
 import "normalize.css";

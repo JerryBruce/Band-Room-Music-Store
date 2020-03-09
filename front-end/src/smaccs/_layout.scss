@@ -34,6 +34,13 @@
   justify-content: center;
 }
 
+.f-co-l-sa {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-around;
+}
+
 .f-co-c-sa {
   display: flex;
   flex-direction: column;

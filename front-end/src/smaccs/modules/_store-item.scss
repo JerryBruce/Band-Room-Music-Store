@@ -3,12 +3,11 @@
   &-search,
   &-page {
     height: 15vh;
-    background-color: $greybox;
   }
 }
 
 .store-item {
-  height: 50vh;
+  height: 70vh;
   width: 45%;
   margin: 0.5rem;
   position: relative;
@@ -23,34 +22,31 @@
     width: 100%;
   }
   &-details {
-    background-color: $greybox;
     width: 100%;
     height: 30%;
   }
   &-name {
     font-size: 1.5rem;
-    height: 25%;
   }
-  &-desc {
+  &-stock {
     width: 100%;
-    height: 20%;
   }
   &-price {
     font-size: 1.2rem;
-    transform: rotate(50deg);
-    position: absolute;
-    top: 3.5rem;
-    text-align: center;
-    right: -1rem;
-    background-color: red;
-    color: white;
   }
-  &-buy {
+  &-btns {
+    width: 100%;
+    height: 30%;
+  }
+  &-buy,
+  &-info {
     border: none;
-    background-color: $secondary;
+    background-color: $primary;
     color: white;
     margin-top: 0.5rem;
-    height: 30%;
-    width: 100%;
+    height: 100%;
+    width: 48%;
+    border-radius: 0.4rem;
+    cursor: pointer;
   }
 }
