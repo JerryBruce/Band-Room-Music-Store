@@ -7,7 +7,7 @@ import StoreDetails from './StoreDetails';
 export class Store extends Component {
   constructor(props) {
     super(props);
-    this.state = { images: [], detailsOpen: false };
+    this.state = { items: [] };
     this.openDetails = this.openDetails.bind(this);
   }
 
@@ -32,14 +32,15 @@ export class Store extends Component {
 
   async getImages() {
     const response = await api.get('/items');
-    console.log(response);
+    this.setState({ items: response.data });
+    console.log(this.state.items);
   }
 
   render() {
     return (
       <div className='store'>
         <div className='store-search'>Store Search</div>
-        <StoreItem images={this.state.images} openDetails={this.openDetails} />
+        <StoreItem items={this.state.items} />
         <div className='store-page'>Store Pages</div>
         <StoreDetails />
       </div>
