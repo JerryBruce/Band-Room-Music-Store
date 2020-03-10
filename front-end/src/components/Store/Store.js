@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import unsplash from "../../api/unsplash";
-import StoreItem from "./StoreItem";
-import StoreDetails from "./StoreDetails";
+import api from '../../api/api';
+import StoreItem from './StoreItem';
+import StoreDetails from './StoreDetails';
 
 export class Store extends Component {
   constructor(props) {
@@ -16,14 +16,14 @@ export class Store extends Component {
   }
 
   openDetails() {
-    const details = document.querySelector(".store-details");
+    const details = document.querySelector('.store-details');
     if (!this.state.detailsOpen) {
-      details.classList.add("isOpen");
+      details.classList.add('isOpen');
       this.setState({
         detailsOpen: true
       });
     } else {
-      details.classList.remove("isOpen");
+      details.classList.remove('isOpen');
       this.setState({
         detailsOpen: false
       });
@@ -31,18 +31,16 @@ export class Store extends Component {
   }
 
   async getImages() {
-    const response = await unsplash.get("/search/photos", {
-      params: { query: "instruments" }
-    });
-    this.setState({ images: response.data.results });
+    const response = await api.get('/items');
+    console.log(response);
   }
 
   render() {
     return (
-      <div className="store">
-        <div className="store-search">Store Search</div>
+      <div className='store'>
+        <div className='store-search'>Store Search</div>
         <StoreItem images={this.state.images} openDetails={this.openDetails} />
-        <div className="store-page">Store Pages</div>
+        <div className='store-page'>Store Pages</div>
         <StoreDetails />
       </div>
     );
