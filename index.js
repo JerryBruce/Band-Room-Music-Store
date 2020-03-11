@@ -1,15 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-require('./db/mongoose');
-const storeRoutes = require('./routes/item');
-
+const app = require('./app');
 const PORT = process.env.PORT || 5000;
 
-const app = express();
-
-app.use(express.json())
-app.use(storeRoutes)
-app.use(cors())
 
 app.listen(PORT, (req, res) => {
     console.log(`Listening on ${PORT}`)
