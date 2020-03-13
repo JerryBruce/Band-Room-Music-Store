@@ -8,6 +8,7 @@ const app = express();
 
 app.use(express.json());
 app.use(storeRoutes);
+app.use(userRoutes);
 app.use(cors());
 
 module.exports = app;

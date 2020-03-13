@@ -1,9 +1,10 @@
 const express = require('express');
 const Item = require('../models/Item');
+const auth = require('../middleware/auth');
 
 const  router = express.Router();
 
-router.post('/items', async (req, res) => {
+router.post('/items', auth, async (req, res) => {
     const item = new Item({
         ...req.body
     })
@@ -40,7 +41,7 @@ router.get('/items/:id', async (req,res) => {
     }
 })
 
-router.patch('/items/:id', async (req, res) => {
+router.patch('/items/:id', auth, async (req, res) => {
     const updates = Object.keys(req.body)
 
     try {
@@ -58,7 +59,7 @@ router.patch('/items/:id', async (req, res) => {
     }
 })
 
-router.delete('/items/:id', async (req, res) => {
+router.delete('/items/:id', auth, async (req, res) => {
     try {
         const item = await Item.findOneAndDelete({ _id: req.params.id })
         if(!item) {
