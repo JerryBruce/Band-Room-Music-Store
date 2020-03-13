@@ -1,6 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import { createStore } from "react-redux";
+import { Provider } from "react-redux";
+import handleMenu from "./redux/reducers";
 
-import App from './components/App';
+import App from "./components/App";
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+const store = createStore(handleMenu);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector("#root")
+);

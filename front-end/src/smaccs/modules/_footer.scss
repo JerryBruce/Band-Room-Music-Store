@@ -31,11 +31,15 @@
   height: 3rem;
   width: 9rem;
   padding: 0.2rem;
-  background-color: white;
 }
 
-.media-icon {
-  background-color: white;
+.icons {
+  &--tw,
+  &--fb,
+  &--ig {
+    fill: white;
+    color: white;
+  }
 }
 
 .phone-email {
