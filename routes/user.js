@@ -32,11 +32,14 @@ router.post('/admin/logout', auth, async (req, res) => {
             return token.token !== req.token
         })
         await req.user.save()
-
-        res.send()
+        res.send('Logged Out')
     } catch (e) {
         res.status(500).send()
     }
+})
+
+router.get('/user/me', auth, (req, res) => {
+    res.send(req.user) 
 })
 
 module.exports = router

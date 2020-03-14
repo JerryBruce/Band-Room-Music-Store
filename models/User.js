@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const keys = require('../config/keys')
 
 const userSchema = new mongoose.Schema ({
     username: {
@@ -22,8 +23,9 @@ const userSchema = new mongoose.Schema ({
 })
 
 userSchema.methods.generateAuthToken = async function () {
-    const token = jwt.sign({ _id: this._id.toString() }, process.env.JWT_SECRET)
-
+    const token = jwt.sign({ _id: this._id.toString() }, keys.jwtSecret)
+    console.log(token)
+    console.log(keys.jwtSecret)
     this.tokens = this.tokens.concat({ token })
     await this.save()
 
@@ -42,6 +44,8 @@ userSchema.statics.findByCredentials = async (username, password) => {
     if(!isMatch) {
         throw new Error ('Login Failed')
     }
+
+    return user
 }
 
 // hash password

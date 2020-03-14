@@ -10,6 +10,7 @@ router.post('/items', auth, async (req, res) => {
     })
 
     try{
+        console.log()
         await item.save()
         res.status(200).send(item)
     } catch (e) {
