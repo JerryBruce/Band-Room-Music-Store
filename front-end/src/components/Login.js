@@ -8,8 +8,8 @@ export default class Login extends Component {
           <h1>Admin Login</h1>
           <div className='hr'></div>
           <form action='login f-co-c-sb'>
-            <input type='text' className='entry' />
-            <input type='password' className='entry' />
+            <input type='text' className='entry' placeholder='Username' />
+            <input type='password' className='entry' placeholder='Password' />
             <input type='submit' className='sub-btn' />
           </form>
           <div className='hr'></div>

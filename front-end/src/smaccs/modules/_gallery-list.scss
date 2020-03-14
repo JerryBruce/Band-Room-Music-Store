@@ -1,0 +1,12 @@
+.gallery {
+  h1 {
+    margin-top: 3rem;
+  }
+  &-list {
+    margin-top: 3rem;
+  }
+  &-img {
+    width: 32rem;
+    margin-bottom: 0.5rem;
+  }
+}

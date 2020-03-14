@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import api from '../../api/api';
+import { local } from '../../api/api';
 import StoreItem from './StoreItem';
 import StoreDetails from './StoreDetails';
 
@@ -31,7 +31,7 @@ export class Store extends Component {
   }
 
   async getImages() {
-    const response = await api.get('/items');
+    const response = await local.get('/items');
     this.setState({ items: response.data });
     console.log(this.state.items);
   }
