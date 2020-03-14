@@ -1,0 +1,29 @@
+.admin-login {
+  height: 72vh;
+  h1 {
+    text-align: center;
+  }
+  form {
+    padding: 4rem;
+    text-align: center;
+  }
+  .entry {
+    height: 4rem;
+    width: 70%;
+    margin: 1.5rem;
+    font-size: 1.6rem;
+  }
+  .sub-btn {
+    height: 2.5rem;
+    width: 40%;
+    background-color: $secondary;
+    color: white;
+    border: none;
+    border-radius: 0.4rem;
+  }
+}
+.hr {
+  height: 0.5rem;
+  background-color: black;
+  width: 75%;
+}

@@ -1,5 +1,4 @@
 import React from 'react';
-import sax from '../../images/sax.jpg';
 
 const StoreItem = props => {
   const items = props.items.map(items => {

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 * {
   box-sizing: border-box;
@@ -9,7 +9,8 @@ html {
 }
 
 ul,
-ol {
+ol,
+form {
   list-style: none;
   margin: 0;
   padding: 0;
