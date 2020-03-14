@@ -7,7 +7,7 @@ import Footer from './Footer';
 import About from './About';
 import Contact from './Contact';
 import Store from './Store/Store';
-import Gallery from './Gallery';
+import Gallery from './Gallery/Gallery';
 import Login from './Login';
 import Dash from './Dash';
 
