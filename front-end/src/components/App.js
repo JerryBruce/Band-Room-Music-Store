@@ -9,7 +9,7 @@ import Contact from './Contact';
 import Store from './Store/Store';
 import Gallery from './Gallery';
 import Login from './Login';
-import Admin from './Dash';
+import Dash from './Dash';
 
 import 'normalize.css';
 import '../smaccs/main.scss';
@@ -27,7 +27,7 @@ export class App extends Component {
             <Route path='/about' component={About} />
             <Route path='/gallery' component={Gallery} />
             <Route path='/cato' component={Login} />
-            <Route path='./admin-view' component={Admin} />
+            <Route path='/dash' component={Dash} />
           </Switch>
           <Footer />
         </div>
