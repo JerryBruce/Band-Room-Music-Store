@@ -16,7 +16,7 @@ const router = express.Router();
 //     }
 // })
 
-router.post('/admin', async (req, res) => {
+router.post('/admin/login', async (req, res) => {
     try {
         const user = await User.findByCredentials(req.body.username, req.body.password)
         const token = await user.generateAuthToken()
