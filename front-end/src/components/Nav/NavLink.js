@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { toggle } from '../actions/toggle';
+import { toggle } from '../../state/actions/toggle';
 
 class NavLink extends Component {
   render() {
