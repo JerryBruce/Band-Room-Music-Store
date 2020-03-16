@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import NavList from './NavList';
-import { toggle } from '../../state/actions/toggle';
+import toggle from '../../state/actions/toggle';
 
 export class Nav extends Component {
   render() {

@@ -1,7 +1,9 @@
 import { TOGGLE_MENU } from './types';
 
-export const toggle = () => {
+const toggle = () => {
   return {
     type: TOGGLE_MENU
   };
 };
+
+export default toggle;

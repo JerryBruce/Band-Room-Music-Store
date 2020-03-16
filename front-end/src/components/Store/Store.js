@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { local } from '../../api/api';
+import { local } from '../../api';
 import StoreItem from './StoreItem';
 import StoreDetails from './StoreDetails';
 
