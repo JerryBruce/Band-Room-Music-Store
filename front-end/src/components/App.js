@@ -8,7 +8,6 @@ import Contact from './Contact';
 import Store from './Store/Store';
 import Gallery from './Gallery/Gallery';
 import Login from './Admin/Login';
-import Dash from './Admin/Dash';
 import Footer from './Footer/Footer';
 
 import 'normalize.css';
@@ -27,7 +26,6 @@ export class App extends Component {
             <Route path='/about' component={About} />
             <Route path='/gallery' component={Gallery} />
             <Route path='/cato' component={Login} />
-            <Route path='/dash' component={Dash} />
           </Switch>
           <Footer />
         </div>

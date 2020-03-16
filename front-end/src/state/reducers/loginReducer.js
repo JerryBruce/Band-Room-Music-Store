@@ -4,47 +4,24 @@ import {
   LOGOUT_SUCCESS,
   AUTH_ERROR,
   USER_LOADING,
-  USER_LOADED
+  USER_LOADED,
+  TOKEN_RECIEVED
 } from '../actions/types';
 
-const initialState = {
-  token: localStorage.getItem('token'),
-  isAuthenticated: null,
-  isLoading: false,
-  user: null
-};
-
-const loginReducer = (state = initialState, action) => {
+const loginReducer = (
+  state = { token: null, isAuthenticated: false },
+  action
+) => {
   switch (action.type) {
-    case USER_LOADING:
+    case TOKEN_RECIEVED:
       return {
         ...state,
-        isLoading: true
-      };
-    case USER_LOADED:
-      return {
-        ...state,
-        isLoading: false,
-        isLoaded: true,
-        user: action.payload
+        token: { headers: { Authorization: `Bearer ${action.payload}` } }
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
-        ...action.payload,
-        isLoading: false,
-        isLoaded: true,
-        user: action.payload
-      };
-    case AUTH_ERROR:
-    case LOGIN_FAIL:
-    case LOGOUT_SUCCESS:
-      return {
-        ...state,
-        token: null,
-        user: null,
-        isAuthenticated: false,
-        isLoading: false
+        isAuthenticated: true
       };
     default:
       return state;

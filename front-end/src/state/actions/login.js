@@ -1,24 +1,29 @@
-import jwt from 'jsonwebtoken';
-
 import { local } from '../../api';
-import setAuthorizationToken from '../../api/utils/setAuthorizationToken';
+import {
+  LOGIN_SUCCESS,
+  TOKEN_RECIEVED,
+  LOGOUT_SUCCESS
+} from '../actions/types';
 
-const userLogin = formValues => {
-  const request = local
-    .post('/admin/login', formValues)
-    .then(response => {
-      const token = response.data.token;
-      localStorage.setItem('jwtToken', token);
-      setAuthorizationToken(token);
-      console.log(jwt.decode(token));
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  return {
-    type: 'LOGIN',
-    payload: request
+export const userLogin = (user, pass) => {
+  const body = { username: user, password: pass };
+
+  return async function(dispatch, getState) {
+    const res = await local.post('/admin/login', body);
+
+    dispatch({ type: TOKEN_RECIEVED, payload: res.data.token });
+    const state = getState();
+    dispatch(tokenSend(state.loginReducer.token));
   };
 };
 
-export default userLogin;
+export const tokenSend = token => {
+  return async function(dispatch) {
+    const res = await local.get('/admin', token);
+    dispatch({ type: LOGIN_SUCCESS });
+  };
+};
+
+export const logOut = () => {
+  return console.log('hi');
+};
