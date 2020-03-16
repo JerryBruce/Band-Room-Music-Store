@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import toggle from '../../state/actions/toggle';
+import { toggleNav } from '../../state/actions/toggle';
 
 class NavLink extends Component {
   render() {
     return (
-      <Link to={this.props.pageRoute} onClick={() => this.props.toggle()}>
+      <Link to={this.props.pageRoute} onClick={() => this.props.toggleNav()}>
         <li className='menu-list-item'>{this.props.pageName}</li>
       </Link>
     );
@@ -15,7 +15,7 @@ class NavLink extends Component {
 }
 
 const mapStateToProps = state => {
-  return { isOpen: state.toggleReducer.isOpen };
+  return { navOpen: state.toggleReducer.navOpen };
 };
 
-export default connect(mapStateToProps, { toggle: toggle })(NavLink);
+export default connect(mapStateToProps, { toggleNav })(NavLink);
