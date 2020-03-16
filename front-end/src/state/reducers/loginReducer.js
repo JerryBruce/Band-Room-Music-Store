@@ -1,27 +1,38 @@
 import {
   LOGIN_SUCCESS,
-  LOGIN_FAIL,
   LOGOUT_SUCCESS,
-  AUTH_ERROR,
-  USER_LOADING,
-  USER_LOADED,
   TOKEN_RECIEVED
 } from '../actions/types';
 
 const loginReducer = (
-  state = { token: null, isAuthenticated: false },
+  state = {
+    token: null,
+    header: null,
+    isAuthenticated: false,
+    tokens: null
+  },
   action
 ) => {
   switch (action.type) {
     case TOKEN_RECIEVED:
       return {
         ...state,
-        token: { headers: { Authorization: `Bearer ${action.payload}` } }
+        header: {
+          headers: { Authorization: `Bearer ${action.payload.token}` }
+        },
+        token: action.payload.token
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
         isAuthenticated: true
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        token: null,
+        header: null,
+        isAuthenticated: false
       };
     default:
       return state;
