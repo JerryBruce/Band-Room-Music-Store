@@ -1,0 +1,9 @@
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+export const TOKEN_RECIEVED = 'TOKEN_RECIEVED';
+export const ITEMS_RECIEVED = 'ITEMS_RECIEVED';
+export const ITEM_RECIEVED = 'ITEM_RECIEVED';
+export const TOGGLE_NAV = 'TOGGLE_NAV';
+export const TOGGLE_STORE = 'TOGGLE_STORE';
+export const TOGGLE_RENT = 'TOGGLE_RENT';
+export const TOGGLE_BUY = 'TOGGLE_BUY';

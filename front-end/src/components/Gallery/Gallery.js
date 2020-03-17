@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import GalleryList from './GalleryList';
-import { unsplash } from '../../api/api';
+import { unsplash } from '../../api';
 
 export class Gallery extends Component {
   constructor(props) {
