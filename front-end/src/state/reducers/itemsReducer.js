@@ -18,11 +18,11 @@ const itemsReducer = (
         ...state,
         currentItem: state.items.find(item => item._id === action.payload)
       };
-    case ITEM_CREATED:
-      return {
-        ...state,
-        items: state.items.push(action.payload)
-      };
+    // case ITEM_CREATED:
+    //   return {
+    //     ...state,
+    //     items: [...action.payload]
+    //   };
     default:
       return state;
   }

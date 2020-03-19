@@ -20,10 +20,13 @@ export const getDetails = item => {
 export const createItem = item => {
   return async function(dispatch, getState) {
     const state = getState();
-    const headers = state.loginReducer.header.headers;
+    const headers = {
+      Authorization: state.loginReducer.header.headers.Authorization,
+      'Content-Type': 'application/json'
+    };
     const options = {
       headers,
-      body: item
+      data: item
     };
     console.log(options);
     const res = await local.post('/items', null, options);

@@ -38,7 +38,7 @@ class CreateItem extends React.Component {
           <input type='text' ref='series' placeholder='series' />
           <input type='number' ref='stock' placeholder='stock' />
           <textarea type='text' ref='description' placeholder='description' />
-          <input type='url' ref='img' placeholder='image URL' />
+          <input type='text' ref='img' placeholder='image URL' />
           <input type='number' ref='rent' placeholder='rent price' />
           <input type='number' ref='buy' placeholder='buy price' />
           <button type='submit'>Submit</button>
