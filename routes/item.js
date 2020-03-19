@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer');
 const Item = require('../models/Item');
 const auth = require('../middleware/auth');
 
@@ -65,6 +66,7 @@ router.delete('/items/:id', auth, async (req, res) => {
       return res.status(404).send();
     }
 
+<<<<<<< HEAD
     res.send(`${item.name} has been deleted.`);
   } catch (e) {
     res.status(500).send();
@@ -72,3 +74,20 @@ router.delete('/items/:id', auth, async (req, res) => {
 });
 
 module.exports = router;
+=======
+const upload = multer({
+  limits: {
+    fileSize: 1000000
+  },
+    fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+        return cb(new Error('Please upload a picture'))
+        }
+        cb(undefined, true)
+    }
+})
+
+
+
+module.exports = router
+>>>>>>> d2dc57f4d5b5a13aca2983958425ef891e64a25f
