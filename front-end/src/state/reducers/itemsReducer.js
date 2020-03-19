@@ -1,4 +1,4 @@
-import { ITEMS_RECIEVED, ITEM_RECIEVED } from '../actions/types';
+import { ITEMS_RECIEVED, ITEM_RECIEVED, ITEM_CREATED } from '../actions/types';
 
 const itemsReducer = (
   state = {
@@ -17,6 +17,11 @@ const itemsReducer = (
       return {
         ...state,
         currentItem: state.items.find(item => item._id === action.payload)
+      };
+    case ITEM_CREATED:
+      return {
+        ...state,
+        items: state.items.push(action.payload)
       };
     default:
       return state;
