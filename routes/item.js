@@ -60,46 +60,30 @@ router.patch('/items/:id', auth, async (req, res) => {
 });
 
 router.delete('/items/:id', auth, async (req, res) => {
-<<<<<<< HEAD
-    try {
-        const item = await Item.findOneAndDelete({ _id: req.params.id });
-        if (!item) {
-            return res.status(404).send();
-        } 
-    }catch (e) {
-          throw new Error  
-=======
   try {
     const item = await Item.findOneAndDelete({ _id: req.params.id });
     if (!item) {
       return res.status(404).send();
     }
 
-<<<<<<< HEAD
     res.send(`${item.name} has been deleted.`);
   } catch (e) {
     res.status(500).send();
   }
 });
 
-module.exports = router;
-=======
 const upload = multer({
   limits: {
     fileSize: 1000000
   },
-    fileFilter(req, file, cb) {
+  fileFilter(req, file, cb) {
     if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
-        return cb(new Error('Please upload a picture'))
-        }
-        cb(undefined, true)
->>>>>>> 8fd42cc0e51ca6e7b77d6e66bbaa00c058b2134e
+      return cb(new Error("Please upload a picture"));
     }
-})
+    cb(undefined, true);
+  }
+});
+
+module.exports = router;
 
 
-module.exports = router
-<<<<<<< HEAD
-=======
->>>>>>> d2dc57f4d5b5a13aca2983958425ef891e64a25f
->>>>>>> 8fd42cc0e51ca6e7b77d6e66bbaa00c058b2134e
