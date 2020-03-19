@@ -6,23 +6,11 @@ import Dash from './Dash';
 class Login extends Component {
   constructor() {
     super();
-    this.state = {
-      user: '',
-      pass: ''
-    };
     this.formSubmit = this.formSubmit.bind(this);
-    this.setUser = this.setUser.bind(this);
-    this.setPass = this.setPass.bind(this);
-  }
-  setUser(e) {
-    this.setState({ user: e.target.value });
-  }
-  setPass(e) {
-    this.setState({ pass: e.target.value });
   }
   formSubmit(e) {
     e.preventDefault();
-    this.props.userLogin(this.state.user, this.state.pass);
+    this.props.userLogin(this.refs.user.value, this.refs.pass.value);
   }
   render() {
     if (!this.props.isAuthenticated) {
@@ -38,14 +26,14 @@ class Login extends Component {
                   type='text'
                   placeholder='Username'
                   className='entry'
-                  onChange={this.setUser}
+                  ref='user'
                 />
                 <input
                   name='password'
                   type='password'
                   placeholder='Password'
                   className='entry'
-                  onChange={this.setPass}
+                  ref='pass'
                 />
               </div>
               <button type='submit' className='sub-btn'>

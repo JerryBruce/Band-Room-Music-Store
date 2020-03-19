@@ -1,4 +1,10 @@
-import { TOGGLE_NAV, TOGGLE_STORE, TOGGLE_RENT, TOGGLE_BUY } from './types';
+import {
+  TOGGLE_NAV,
+  TOGGLE_STORE,
+  TOGGLE_RENT,
+  TOGGLE_BUY,
+  TOGGLE_CREATE
+} from './types';
 
 export const toggleNav = () => {
   return {
@@ -21,5 +27,11 @@ export const toggleBuy = () => {
 export const toggleRent = () => {
   return {
     type: TOGGLE_RENT
+  };
+};
+
+export const toggleCreate = () => {
+  return {
+    type: TOGGLE_CREATE
   };
 };

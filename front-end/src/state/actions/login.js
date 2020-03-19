@@ -10,21 +10,22 @@ import {
 export const userLogin = (user, pass) => {
   const body = { username: user, password: pass };
 
-  return async function(dispatch, getState) {
+  return async function(dispatch) {
     const res = await local.post('/admin/login', body);
 
     localStorage.setItem('token', res.data.token);
     dispatch({ type: TOKEN_RECIEVED, payload: res.data });
-    const state = getState();
-    dispatch(tokenSend(state.loginReducer.header));
+    dispatch(tokenSend());
   };
 };
 
-export const tokenSend = header => {
-  return async function(dispatch) {
+export const tokenSend = () => {
+  return async function(dispatch, getState) {
+    const state = getState();
+    const header = state.loginReducer.header;
     const res = await local.get('/admin', header);
-    dispatch({ type: LOGIN_SUCCESS });
     console.log(res);
+    dispatch({ type: LOGIN_SUCCESS });
   };
 };
 
@@ -35,6 +36,5 @@ export const logOut = () => {
     const res = await local.post('/admin/logout', null, header);
     dispatch({ type: LOGOUT_SUCCESS });
     localStorage.setItem('token', '');
-    console.log(res);
   };
 };
