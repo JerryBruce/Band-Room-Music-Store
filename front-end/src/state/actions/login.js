@@ -13,7 +13,7 @@ export const userLogin = (user, pass) => {
   return async function(dispatch) {
     const res = await local.post('/admin/login', body);
 
-    localStorage.setItem('token', res.data.token);
+    sessionStorage.setItem('token', res.data.token);
     dispatch({ type: TOKEN_RECIEVED, payload: res.data });
     dispatch(tokenSend());
   };
@@ -35,6 +35,6 @@ export const logOut = () => {
   return async function(dispatch) {
     await local.post('/admin/logout', null, header);
     dispatch({ type: LOGOUT_SUCCESS });
-    localStorage.setItem('token', '');
+    sessionStorage.setItem('token', '');
   };
 };

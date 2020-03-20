@@ -2,18 +2,18 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { rootReducer } from './reducers';
 import thunk from 'redux-thunk';
 
-const saveToLocalStorage = state => {
+const saveToSessionStorage = state => {
   try {
     const serializedState = JSON.stringify(state);
-    localStorage.setItem('state', serializedState);
+    sessionStorage.setItem('state', serializedState);
   } catch (e) {
     console.log(e);
   }
 };
 
-const loadFromLocalStorage = () => {
+const loadFromSessionStorage = () => {
   try {
-    const serializedState = localStorage.getItem('state');
+    const serializedState = sessionStorage.getItem('state');
     if (serializedState === null) return undefined;
     return JSON.parse(serializedState);
   } catch (e) {
@@ -22,7 +22,7 @@ const loadFromLocalStorage = () => {
   }
 };
 
-const persistedState = loadFromLocalStorage();
+const persistedState = loadFromSessionStorage();
 
 const store = createStore(
   rootReducer,
@@ -33,6 +33,6 @@ const store = createStore(
   )
 );
 
-store.subscribe(() => saveToLocalStorage(store.getState()));
+store.subscribe(() => saveToSessionStorage(store.getState()));
 
 export default store;

@@ -2,16 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { toggleCreate } from '../../state/actions/toggle';
-import { createItem } from '../../state/actions/items';
-import e from 'express';
+import { createItem, getItems } from '../../state/actions/items';
 
 class CreateItem extends React.Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.clearForm = this.clearForm.bind(this);
   }
 
-  handleSubmit() {
+  async handleSubmit(e) {
     e.preventDefault();
     const item = {
       name: this.refs.name.value,
@@ -23,7 +23,19 @@ class CreateItem extends React.Component {
       buy: this.refs.buy.value
     };
 
-    this.props.createItem(item);
+    await this.props.createItem(item);
+    this.props.getItems();
+    this.clearForm();
+  }
+
+  clearForm() {
+    this.refs.name.value = '';
+    this.refs.brand.value = '';
+    this.refs.series.value = '';
+    this.refs.stock.value = '';
+    this.refs.description.value = '';
+    this.refs.rent.value = '';
+    this.refs.buy.value = '';
   }
 
   render() {
@@ -97,6 +109,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { toggleCreate, createItem })(
+export default connect(mapStateToProps, { toggleCreate, createItem, getItems })(
   CreateItem
 );
