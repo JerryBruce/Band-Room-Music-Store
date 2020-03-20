@@ -25,7 +25,7 @@ const itemSchema = new mongoose.Schema({
     trim: true
   },
   image: {
-    type: String,
+    type: Buffer,
     required: false
   },
   rent: {

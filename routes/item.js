@@ -1,7 +1,8 @@
 const express = require('express');
-const multer = require('multer');
+const sharp = require('sharp');
 const Item = require('../models/Item');
 const auth = require('../middleware/auth');
+const upload = require('../middleware/image');
 
 const router = express.Router();
 
@@ -9,7 +10,7 @@ router.post('/items', auth, async (req, res) => {
   const item = new Item({
     ...req.body
   });
-  console.log(req.body);
+
   try {
     await item.save();
     res.status(200).send();
@@ -17,6 +18,38 @@ router.post('/items', auth, async (req, res) => {
     res.status(400).send();
   }
 });
+
+router.patch('/item/:id/image', auth, upload.single('image'), async (req, res) => {
+  const _id = req.params.id
+
+  const item = await Item.findOne({ _id })
+
+  const buffer = await sharp(req.file.buffer)
+    .resize({ width: 250, height: 250 })
+    .png()
+    .toBuffer();
+
+  item.image = buffer;
+  await item.save()
+  res.send()
+})
+
+router.get('/item/:id/image', async (req, res) => {
+  try {
+    const item = await Item.findById(req.params.id)
+
+    if(!item || !item.image) {
+      throw new Error()
+    }
+    
+    res.set("Content-Type", "image/png");
+    res.send(item.image);
+  } catch(e) {
+    res.status(404).send()
+  }
+
+
+})
 
 router.get('/items', async (req, res) => {
   try {
@@ -61,7 +94,6 @@ router.patch('/items/:id', auth, async (req, res) => {
 
 router.delete('/items/:id', auth, async (req, res) => {
   try {
-    console.log(req.params.id);
     const item = await Item.findOneAndDelete({
       _id: req.params.id
     });
@@ -76,4 +108,6 @@ router.delete('/items/:id', auth, async (req, res) => {
   }
 });
 
+
 module.exports = router;
+
