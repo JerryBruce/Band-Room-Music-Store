@@ -9,3 +9,5 @@ export const TOGGLE_RENT = 'TOGGLE_RENT';
 export const TOGGLE_BUY = 'TOGGLE_BUY';
 export const ITEM_CREATED = 'ITEM_CREATED';
 export const TOGGLE_CREATE = 'TOGGLE_CREATE';
+export const TOGGLE_ALL = 'TOGGLE_ALL';
+export const ITEM_DELETED = 'ITEM_DELETED';

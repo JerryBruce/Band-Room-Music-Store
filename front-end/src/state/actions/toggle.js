@@ -3,8 +3,15 @@ import {
   TOGGLE_STORE,
   TOGGLE_RENT,
   TOGGLE_BUY,
-  TOGGLE_CREATE
+  TOGGLE_CREATE,
+  TOGGLE_ALL
 } from './types';
+
+export const toggleAll = () => {
+  return {
+    type: TOGGLE_ALL
+  };
+};
 
 export const toggleNav = () => {
   return {

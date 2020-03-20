@@ -9,7 +9,7 @@ router.post('/items', auth, async (req, res) => {
   const item = new Item({
     ...req.body
   });
-
+  console.log(req.body);
   try {
     await item.save();
     res.status(200).send();
@@ -59,8 +59,9 @@ router.patch('/items/:id', auth, async (req, res) => {
   }
 });
 
-router.delete("/items/:id", auth, async (req, res) => {
+router.delete('/items/:id', auth, async (req, res) => {
   try {
+    console.log(req.params.id);
     const item = await Item.findOneAndDelete({
       _id: req.params.id
     });
@@ -75,4 +76,4 @@ router.delete("/items/:id", auth, async (req, res) => {
   }
 });
 
-module.exports = router
+module.exports = router;

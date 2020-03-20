@@ -16,7 +16,7 @@ const itemSchema = new mongoose.Schema({
     trim: true
   },
   stock: {
-    type: Number,
+    type: String,
     required: true
   },
   description: {
@@ -25,15 +25,15 @@ const itemSchema = new mongoose.Schema({
     trim: true
   },
   image: {
-    type: Buffer,
+    type: String,
     required: false
   },
   rent: {
-    type: Number,
+    type: String,
     required: true
   },
   buy: {
-    type: Number,
+    type: String,
     required: false
   }
 });

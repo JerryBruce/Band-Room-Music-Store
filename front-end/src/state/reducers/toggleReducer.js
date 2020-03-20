@@ -3,7 +3,8 @@ import {
   TOGGLE_STORE,
   TOGGLE_BUY,
   TOGGLE_RENT,
-  TOGGLE_CREATE
+  TOGGLE_CREATE,
+  TOGGLE_ALL
 } from '../actions/types';
 
 const toggleReducer = (
@@ -17,6 +18,15 @@ const toggleReducer = (
   action
 ) => {
   switch (action.type) {
+    case TOGGLE_ALL:
+      return {
+        ...state,
+        navOpen: false,
+        storeOpen: false,
+        buyOpen: false,
+        rentOpen: false,
+        createOpen: false
+      };
     case TOGGLE_NAV:
       return { ...state, navOpen: !state.navOpen };
     case TOGGLE_STORE:
