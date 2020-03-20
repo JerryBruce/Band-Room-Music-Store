@@ -1,4 +1,4 @@
-import { ITEMS_RECIEVED, ITEM_DELETED } from './types';
+import { ITEMS_RECIEVED, ITEM_DELETED, ITEM_UPDATED } from './types';
 import { ITEM_RECIEVED } from './types';
 import { ITEM_CREATED } from './types';
 import { local } from '../../api';
@@ -32,6 +32,25 @@ export const createItem = item => {
     const res = await local.post('/items', null, options);
     console.log(res);
     dispatch({ type: ITEM_CREATED, payload: res.data });
+  };
+};
+
+export const editItem = item => {
+  return async function(dispatch, getState) {
+    const state = getState();
+    const id = state.itemsReducer.currentItem._id;
+    const options = {
+      headers: {
+        Authorization: state.loginReducer.header.headers.Authorization
+      },
+      data: item
+    };
+    const res = await local.patch(`/items/${id}`, null, options);
+    console.log(res);
+    dispatch({
+      type: ITEM_UPDATED,
+      payload: item
+    });
   };
 };
 

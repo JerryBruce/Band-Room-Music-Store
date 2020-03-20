@@ -5,7 +5,8 @@ import {
   TOGGLE_RENT,
   TOGGLE_CREATE,
   TOGGLE_ALL,
-  TOGGLE_CONFIRM
+  TOGGLE_CONFIRM,
+  TOGGLE_EDIT
 } from '../actions/types';
 
 const toggleReducer = (
@@ -42,6 +43,8 @@ const toggleReducer = (
       return { ...state, createOpen: !state.createOpen };
     case TOGGLE_CONFIRM:
       return { ...state, confirmOpen: !state.confirmOpen };
+    case TOGGLE_EDIT:
+      return { ...state, editOpen: !state.editOpen };
     default:
       return state;
   }

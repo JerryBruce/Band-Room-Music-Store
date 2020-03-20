@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import EditItem from './EditItem';
 import CreateItem from './CreateItem';
 import Confirm from './Confirm';
 import { logOut } from '../../state/actions/login';
-import { toggleCreate, toggleConfirm } from '../../state/actions/toggle';
-import { getItems, deleteItem, getDetails } from '../../state/actions/items';
+import {
+  toggleCreate,
+  toggleConfirm,
+  toggleEdit
+} from '../../state/actions/toggle';
+import { getItems, getDetails } from '../../state/actions/items';
 
 class Dash extends Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
-  async handleClick(e) {
+  async handleEdit(e) {
+    await this.props.getDetails(e.target.value);
+    this.props.toggleEdit();
+  }
+
+  async handleDelete(e) {
     await this.props.getDetails(e.target.value);
     this.props.toggleConfirm();
   }
@@ -39,10 +50,13 @@ class Dash extends Component {
               <span className='green'>In Stock</span>
             </div>
             <div className='store-item-btns f-c-sa'>
-              <button className='store-item-info' value={item._id}>
+              <button
+                className='store-item-info'
+                value={item._id}
+                onClick={e => this.handleEdit(e)}>
                 Edit Item
               </button>
-              <button value={item._id} onClick={e => this.handleClick(e)}>
+              <button value={item._id} onClick={e => this.handleDelete(e)}>
                 Delete Item
               </button>
             </div>
@@ -50,7 +64,11 @@ class Dash extends Component {
         </div>
       );
     });
-    if (!this.props.createOpen && !this.props.confirmOpen) {
+    if (
+      !this.props.createOpen &&
+      !this.props.confirmOpen &&
+      !this.props.editOpen
+    ) {
       return (
         <div className='dash f-co-c-sa'>
           <button className='addItem' onClick={() => this.props.toggleCreate()}>
@@ -62,9 +80,17 @@ class Dash extends Component {
           <div className='if fw f-c-c'>{items}</div>
         </div>
       );
-    } else if (this.props.createOpen && !this.props.confirmOpen) {
+    } else if (
+      this.props.createOpen &&
+      !this.props.confirmOpen &&
+      !this.props.editOpen
+    ) {
       return <CreateItem />;
-    } else if (!this.props.createOpen && this.props.confirmOpen) {
+    } else if (
+      !this.props.createOpen &&
+      this.props.confirmOpen &&
+      !this.props.editOpen
+    ) {
       return (
         <div>
           <Confirm />
@@ -81,6 +107,12 @@ class Dash extends Component {
           </div>
         </div>
       );
+    } else if (
+      !this.props.createOpen &&
+      !this.props.confirmOpen &&
+      this.props.editOpen
+    ) {
+      return <EditItem />;
     } else return <h1>something went bad</h1>;
   }
 }
@@ -90,7 +122,8 @@ const mapStateToProps = state => {
     isAuthenticated: state.loginReducer.isAuthenticated,
     createOpen: state.toggleReducer.createOpen,
     items: state.itemsReducer.items,
-    confirmOpen: state.toggleReducer.confirmOpen
+    confirmOpen: state.toggleReducer.confirmOpen,
+    editOpen: state.toggleReducer.editOpen
   };
 };
 
@@ -98,7 +131,7 @@ export default connect(mapStateToProps, {
   logOut,
   toggleCreate,
   getItems,
-  deleteItem,
   getDetails,
-  toggleConfirm
+  toggleConfirm,
+  toggleEdit
 })(Dash);

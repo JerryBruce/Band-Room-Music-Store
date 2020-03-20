@@ -5,7 +5,8 @@ import {
   TOGGLE_BUY,
   TOGGLE_CREATE,
   TOGGLE_ALL,
-  TOGGLE_CONFIRM
+  TOGGLE_CONFIRM,
+  TOGGLE_EDIT
 } from './types';
 
 export const toggleAll = () => {
@@ -47,5 +48,11 @@ export const toggleCreate = () => {
 export const toggleConfirm = () => {
   return {
     type: TOGGLE_CONFIRM
+  };
+};
+
+export const toggleEdit = () => {
+  return {
+    type: TOGGLE_EDIT
   };
 };
