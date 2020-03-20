@@ -1,4 +1,9 @@
-import { ITEMS_RECIEVED, ITEM_RECIEVED, ITEM_CREATED } from '../actions/types';
+import {
+  ITEMS_RECIEVED,
+  ITEM_RECIEVED,
+  ITEM_CREATED,
+  ITEM_DELETED
+} from '../actions/types';
 
 const itemsReducer = (
   state = {
@@ -18,11 +23,19 @@ const itemsReducer = (
         ...state,
         currentItem: state.items.find(item => item._id === action.payload)
       };
-    // case ITEM_CREATED:
-    //   return {
-    //     ...state,
-    //     items: [...action.payload]
-    //   };
+    case ITEM_CREATED:
+      return {
+        ...state,
+        items: [...state.items, action.payload]
+      };
+    case ITEM_DELETED:
+      return {
+        ...state,
+        items: [
+          ...state.items.slice(0, action.payload),
+          ...state.items.slice(action.payload + 1)
+        ]
+      };
     default:
       return state;
   }

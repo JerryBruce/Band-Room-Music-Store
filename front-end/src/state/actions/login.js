@@ -33,7 +33,7 @@ export const logOut = () => {
   const state = store.getState();
   const header = state.loginReducer.header;
   return async function(dispatch) {
-    const res = await local.post('/admin/logout', null, header);
+    await local.post('/admin/logout', null, header);
     dispatch({ type: LOGOUT_SUCCESS });
     localStorage.setItem('token', '');
   };

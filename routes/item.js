@@ -61,6 +61,7 @@ router.patch('/items/:id', auth, async (req, res) => {
 
 router.delete('/items/:id', auth, async (req, res) => {
   try {
+    console.log(req.params.id);
     const item = await Item.findOneAndDelete({
       _id: req.params.id
     });
