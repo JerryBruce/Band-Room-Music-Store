@@ -4,7 +4,8 @@ import {
   TOGGLE_RENT,
   TOGGLE_BUY,
   TOGGLE_CREATE,
-  TOGGLE_ALL
+  TOGGLE_ALL,
+  TOGGLE_CONFIRM
 } from './types';
 
 export const toggleAll = () => {
@@ -40,5 +41,11 @@ export const toggleRent = () => {
 export const toggleCreate = () => {
   return {
     type: TOGGLE_CREATE
+  };
+};
+
+export const toggleConfirm = () => {
+  return {
+    type: TOGGLE_CONFIRM
   };
 };

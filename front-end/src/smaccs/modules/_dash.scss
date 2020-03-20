@@ -1,0 +1,31 @@
+.confirm {
+  height: 10rem;
+  width: 20rem;
+  z-index: 10000000;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 4px;
+  p {
+    font-size: 2rem;
+    margin: 0.5rem 0 1.7rem 0;
+  }
+  &-body {
+  }
+  &-btn {
+    &-del,
+    &-can {
+      height: 3rem;
+      width: 8rem;
+      border-radius: 4px;
+      color: white;
+      border: none;
+      margin: 0.5rem;
+    }
+    &-del {
+      background-color: red;
+    }
+    &-can {
+      background-color: green;
+    }
+  }
+}

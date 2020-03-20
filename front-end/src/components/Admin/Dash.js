@@ -2,22 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import CreateItem from './CreateItem';
+import Confirm from './Confirm';
 import { logOut } from '../../state/actions/login';
-import { toggleCreate } from '../../state/actions/toggle';
+import { toggleCreate, toggleConfirm } from '../../state/actions/toggle';
 import { getItems, deleteItem, getDetails } from '../../state/actions/items';
 
 class Dash extends Component {
   constructor(props) {
     super(props);
-    this.clickHandler = this.clickHandler.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
+  async handleClick(e) {
+    await this.props.getDetails(e.target.value);
+    this.props.toggleConfirm();
+  }
   componentDidMount() {
-    this.props.getItems();
-  }
-
-  async clickHandler(e) {
-    await this.props.deleteItem(e.target.value);
     this.props.getItems();
   }
 
@@ -42,7 +42,7 @@ class Dash extends Component {
               <button className='store-item-info' value={item._id}>
                 Edit Item
               </button>
-              <button value={item._id} onClick={e => this.clickHandler(e)}>
+              <button value={item._id} onClick={e => this.handleClick(e)}>
                 Delete Item
               </button>
             </div>
@@ -50,7 +50,7 @@ class Dash extends Component {
         </div>
       );
     });
-    if (!this.props.createOpen) {
+    if (!this.props.createOpen && !this.props.confirmOpen) {
       return (
         <div className='dash f-co-c-sa'>
           <button className='addItem' onClick={() => this.props.toggleCreate()}>
@@ -62,9 +62,26 @@ class Dash extends Component {
           <div className='if fw f-c-c'>{items}</div>
         </div>
       );
-    } else {
+    } else if (this.props.createOpen && !this.props.confirmOpen) {
       return <CreateItem />;
-    }
+    } else if (!this.props.createOpen && this.props.confirmOpen) {
+      return (
+        <div>
+          <Confirm />
+          <div className='dash f-co-c-sa'>
+            <button
+              className='addItem'
+              onClick={() => this.props.toggleCreate()}>
+              Add Item
+            </button>
+            <button className='logout' onClick={() => this.props.logOut()}>
+              Logout
+            </button>
+            <div className='if fw f-c-c'>{items}</div>
+          </div>
+        </div>
+      );
+    } else return <h1>something went bad</h1>;
   }
 }
 
@@ -72,8 +89,8 @@ const mapStateToProps = state => {
   return {
     isAuthenticated: state.loginReducer.isAuthenticated,
     createOpen: state.toggleReducer.createOpen,
-    currentItem: state.itemsReducer.currentItem,
-    items: state.itemsReducer.items
+    items: state.itemsReducer.items,
+    confirmOpen: state.toggleReducer.confirmOpen
   };
 };
 
@@ -82,5 +99,6 @@ export default connect(mapStateToProps, {
   toggleCreate,
   getItems,
   deleteItem,
-  getDetails
+  getDetails,
+  toggleConfirm
 })(Dash);
