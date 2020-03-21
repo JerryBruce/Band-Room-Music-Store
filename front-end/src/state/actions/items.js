@@ -28,8 +28,8 @@ export const createItem = item => {
       headers,
       data: item
     };
-    console.log(options);
     const res = await local.post('/items', null, options);
+    console.log(res);
     dispatch({ type: ITEM_CREATED, payload: res.data });
   };
 };
