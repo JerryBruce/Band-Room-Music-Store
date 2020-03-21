@@ -20,7 +20,7 @@ router.post('/items', auth, async (req, res) => {
 });
 
 router.patch(
-  '/item/:id/image',
+  '/items/:id/image',
   auth,
   upload.single('image'),
   async (req, res) => {
@@ -39,7 +39,7 @@ router.patch(
   }
 );
 
-router.get('/item/:id/image', async (req, res) => {
+router.get('/items/:id/image', async (req, res) => {
   try {
     const item = await Item.findById(req.params.id);
 
@@ -60,7 +60,7 @@ router.get('/items', async (req, res) => {
     res.send(items);
   } catch (e) {
     res.send();
-  } 
+  }
 });
 
 router.patch('/items/:id', auth, async (req, res) => {

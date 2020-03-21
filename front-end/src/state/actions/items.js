@@ -30,7 +30,6 @@ export const createItem = item => {
     };
     console.log(options);
     const res = await local.post('/items', null, options);
-    console.log(res);
     dispatch({ type: ITEM_CREATED, payload: res.data });
   };
 };
@@ -45,8 +44,7 @@ export const editItem = item => {
       },
       data: item
     };
-    const res = await local.patch(`/items/${id}`, null, options);
-    console.log(res);
+    await local.patch(`/items/${id}`, null, options);
     dispatch({
       type: ITEM_UPDATED,
       payload: item
