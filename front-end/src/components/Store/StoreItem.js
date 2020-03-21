@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import StoreDetails from './StoreDetails';
 
+import StoreDetails from './StoreDetails';
 import { getItems } from '../../state/actions/items';
 import { getDetails } from '../../state/actions/items';
 import { toggleStore } from '../../state/actions/toggle';
@@ -17,8 +17,8 @@ class StoreItem extends React.Component {
   }
 
   clickHandler(e) {
-    this.props.toggleStore();
     this.props.getDetails(e.target.value);
+    this.props.toggleStore();
   }
 
   render() {

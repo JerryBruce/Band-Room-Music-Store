@@ -1,3 +1,52 @@
-.dash {
+.confirm {
+  height: 10rem;
+  width: 20rem;
+  z-index: 10000000;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 4px;
+  p {
+    font-size: 2rem;
+    margin: 0.5rem 0 1.7rem 0;
+  }
+  &-btn {
+    &-del,
+    &-can {
+      height: 3rem;
+      width: 8rem;
+      border-radius: 4px;
+      color: white;
+      border: none;
+      margin: 0.5rem;
+    }
+    &-del {
+      background-color: red;
+    }
+    &-can {
+      background-color: green;
+    }
+  }
+}
+
+.create-item {
   height: 72vh;
+}
+.create-form {
+  &-input {
+    height: 3rem;
+    width: 80vw;
+    margin: 0.3rem;
+  }
+  &-desc {
+    height: 10rem;
+    width: 80vw;
+    margin: 0.3rem;
+  }
+  &-btn {
+    width: 50vw;
+    height: 3rem;
+    border: none;
+    border-radius: 4px;
+    margin: 0.3rem;
+  }
 }

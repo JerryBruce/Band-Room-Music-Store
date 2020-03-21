@@ -1,4 +1,19 @@
-import { TOGGLE_NAV, TOGGLE_STORE, TOGGLE_RENT, TOGGLE_BUY } from './types';
+import {
+  TOGGLE_NAV,
+  TOGGLE_STORE,
+  TOGGLE_RENT,
+  TOGGLE_BUY,
+  TOGGLE_CREATE,
+  TOGGLE_ALL,
+  TOGGLE_CONFIRM,
+  TOGGLE_EDIT
+} from './types';
+
+export const toggleAll = () => {
+  return {
+    type: TOGGLE_ALL
+  };
+};
 
 export const toggleNav = () => {
   return {
@@ -21,5 +36,23 @@ export const toggleBuy = () => {
 export const toggleRent = () => {
   return {
     type: TOGGLE_RENT
+  };
+};
+
+export const toggleCreate = () => {
+  return {
+    type: TOGGLE_CREATE
+  };
+};
+
+export const toggleConfirm = () => {
+  return {
+    type: TOGGLE_CONFIRM
+  };
+};
+
+export const toggleEdit = () => {
+  return {
+    type: TOGGLE_EDIT
   };
 };

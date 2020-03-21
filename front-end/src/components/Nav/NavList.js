@@ -12,7 +12,6 @@ export default class NavList extends Component {
         <NavLink pageName={'Contact'} pageRoute={'/contact'} />
         <NavLink pageName={'Gallery'} pageRoute={'/gallery'} />
         <NavLink pageName={'Login'} pageRoute={'/cato'} />
-        <NavLink pageName={'Dash'} pageRoute={'/dash'} />
       </ul>
     );
   }
