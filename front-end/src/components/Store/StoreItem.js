@@ -26,7 +26,11 @@ class StoreItem extends React.Component {
       return (
         <div className='store-item f-co-c-sb' key={item._id}>
           <div className='store-item-container as-c js-c'>
-            <img src={item.image} alt='item' className='store-item-image' />
+            <img
+              src={`http://localhost:3000/items/${item._id}/image`}
+              alt='item'
+              className='store-item-image'
+            />
           </div>
           <div className='store-item-details f-co-l-sa'>
             <div className='store-item-name'>{item.name}</div>

@@ -24,10 +24,7 @@ class CreateItem extends React.Component {
     };
     const image = this.refs.image.files[0];
 
-    console.log(image);
-
     await this.props.createItem(item, image);
-    this.props.getItems();
     this.clearForm();
   }
 

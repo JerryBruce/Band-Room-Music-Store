@@ -18,21 +18,30 @@ export const getDetails = item => {
 };
 
 export const createItem = (item, image) => {
-  return async function(getState) {
+  return async function(dispatch, getState) {
     const state = getState();
     const Authorization = state.loginReducer.header.headers.Authorization;
     const fd = new FormData();
     fd.append('image', image);
     const options = {
-      headers: { Authorization },
+      headers: {
+        Authorization
+      },
       data: item
     };
     const imageOptions = {
-      headers: { Authorization, 'Content-Type': 'multipart/form-data' }
+      headers: {
+        Authorization,
+        'Content-Type': 'multipart/form-data'
+      }
     };
-    const res = await local.post('/items', image, options);
-    await local.patch(`/items/${res.data._id}/image`, fd, imageOptions);
-    local.get('/items');
+    const res = await local.post('/items', null, options);
+    const upload = await local.patch(
+      `/items/${res.data._id}/image`,
+      fd,
+      imageOptions
+    );
+    dispatch({ type: ITEM_CREATED, payload: res.data });
   };
 };
 
