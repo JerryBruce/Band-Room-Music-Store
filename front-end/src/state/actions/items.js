@@ -17,20 +17,22 @@ export const getDetails = item => {
   };
 };
 
-export const createItem = item => {
-  return async function(dispatch, getState) {
+export const createItem = (item, image) => {
+  return async function(getState) {
     const state = getState();
-    const headers = {
-      Authorization: state.loginReducer.header.headers.Authorization,
-      'Content-Type': 'application/json'
-    };
+    const Authorization = state.loginReducer.header.headers.Authorization;
+    const fd = new FormData();
+    fd.append('image', image);
     const options = {
-      headers,
+      headers: { Authorization },
       data: item
     };
-    const res = await local.post('/items', null, options);
-    console.log(res);
-    dispatch({ type: ITEM_CREATED, payload: res.data });
+    const imageOptions = {
+      headers: { Authorization, 'Content-Type': 'multipart/form-data' }
+    };
+    const res = await local.post('/items', image, options);
+    await local.patch(`/items/${res.data._id}/image`, fd, imageOptions);
+    local.get('/items');
   };
 };
 

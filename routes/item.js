@@ -13,7 +13,7 @@ router.post('/items', auth, async (req, res) => {
 
   try {
     await item.save();
-    res.status(200).send();
+    res.status(200).send(item);
   } catch (e) {
     res.status(400).send();
   }

@@ -55,12 +55,15 @@ class Dash extends Component {
             </div>
             <div className='store-item-btns f-c-sa'>
               <button
-                className='store-item-info'
+                className='btn btn-black'
                 value={item._id}
                 onClick={e => this.handleEdit(e)}>
                 Edit Item
               </button>
-              <button value={item._id} onClick={e => this.handleDelete(e)}>
+              <button
+                className='btn btn-red'
+                value={item._id}
+                onClick={e => this.handleDelete(e)}>
                 Delete Item
               </button>
             </div>

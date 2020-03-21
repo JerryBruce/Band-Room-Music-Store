@@ -5,11 +5,28 @@
   height: 3rem;
   width: 10rem;
 }
-.btn {
-  background-color: blue;
+.btn,
+.btn-long {
+  border: none;
   color: white;
+  height: 4rem;
+  width: 7rem;
+  border-radius: 4px;
+  &-long {
+    width: 20rem;
+    height: 3rem;
+  }
+}
+
+.btn-blue {
+  background-color: blue;
 }
 .btn-green {
   background-color: green;
-  color: white;
+}
+.btn-red {
+  background-color: red;
+}
+.btn-black {
+  background-color: black;
 }

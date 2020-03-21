@@ -22,8 +22,11 @@ class CreateItem extends React.Component {
       rent: this.refs.rent.value,
       buy: this.refs.buy.value
     };
+    const image = this.refs.image.files[0];
 
-    await this.props.createItem(item);
+    console.log(image);
+
+    await this.props.createItem(item, image);
     this.props.getItems();
     this.clearForm();
   }
@@ -36,6 +39,7 @@ class CreateItem extends React.Component {
     this.refs.description.value = '';
     this.refs.rent.value = '';
     this.refs.buy.value = '';
+    this.refs.image.value = '';
   }
 
   render() {
@@ -87,12 +91,18 @@ class CreateItem extends React.Component {
             ref='buy'
             placeholder='buy price'
           />
-          <div className='f-co-c-sb'>
-            <button className='create-form-btn btn-green' type='submit'>
+          <input
+            type='file'
+            className='create-form-input'
+            name='image'
+            ref='image'
+          />
+          <div className='f-co-c-sb create-form-btns'>
+            <button className='btn-long btn-green' type='submit'>
               Submit
             </button>
             <button
-              className='create-form-btn btn'
+              className='btn-blue btn-long'
               onClick={() => this.props.toggleCreate()}>
               Back to Dashboard
             </button>
