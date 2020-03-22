@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import { toggleEdit } from '../../state/actions/toggle';
-import { editItem, getItems } from '../../state/actions/items';
+import { toggleEdit } from "../../state/actions/toggle";
+import { editItem, getItems } from "../../state/actions/items";
 
 class EditItem extends React.Component {
   constructor() {
@@ -30,60 +30,62 @@ class EditItem extends React.Component {
   render() {
     const current = this.props.currentItem;
     return (
-      <div className='create-item f-co-c-sa'>
+      <div className="create-item f-co-c-sa">
         <form
-          className='create-form f-co-c-sa'
-          action='submit'
-          onSubmit={this.handleSubmit}>
+          className="create-form f-co-c-sa"
+          action="submit"
+          onSubmit={this.handleSubmit}
+        >
           <input
-            className='create-form-input'
-            type='text'
-            ref='name'
+            className="create-form-input"
+            type="text"
+            ref="name"
             placeholder={current.name}
           />
           <input
-            className='create-form-input'
-            type='text'
-            ref='brand'
+            className="create-form-input"
+            type="text"
+            ref="brand"
             placeholder={current.brand}
           />
           <input
-            className='create-form-input'
-            type='text'
-            ref='series'
+            className="create-form-input"
+            type="text"
+            ref="series"
             placeholder={current.series}
           />
           <input
-            className='create-form-input'
-            type='number'
-            ref='stock'
+            className="create-form-input"
+            type="number"
+            ref="stock"
             placeholder={current.stock}
           />
           <textarea
-            className='create-form-desc'
-            type='text'
-            ref='description'
+            className="create-form-desc"
+            type="text"
+            ref="description"
             placeholder={current.description}
           />
           <input
-            className='create-form-input'
-            type='number'
-            ref='rent'
+            className="create-form-input"
+            type="number"
+            ref="rent"
             placeholder={current.rent}
           />
           <input
-            className='create-form-input'
-            type='number'
-            ref='buy'
+            className="create-form-input"
+            type="number"
+            ref="buy"
             placeholder={current.buy}
           />
-          <div className='f-co-c-sb'>
-            <button className='create-form-btn btn-green' type='submit'>
+          <div className="f-co-c-sb">
+            <button className="btn-long btn-green" type="submit">
               Submit
             </button>
             <button
-              className='create-form-btn btn'
-              onClick={() => this.props.toggleEdit()}>
+              className="btn-long btn-blue"
+              onClick={() => this.props.toggleEdit()}
+            >
               Back to Dashboard
             </button>
           </div>
