@@ -16,8 +16,8 @@ export class Home extends Component {
             </p>
           </div>
           <div className="cta f-c-sa">
-            <button className="btn-cta">Call To Action</button>
-            <button className="btn-cta">Call To Action</button>
+            <button className="btn-cta">See Our Store</button>
+            <button className="btn-cta">Send Us a Message</button>
           </div>
         </div>
       </div>
