@@ -1,0 +1,17 @@
+.form {
+  margin: 3rem 0 3rem 0;
+
+  &-input {
+    height: 3rem;
+    width: 80vw;
+    margin: 0.3rem;
+  }
+  &-message {
+    height: 10rem;
+    width: 80vw;
+    margin: 0.3rem;
+  }
+  &-btns {
+    height: 7rem;
+  }
+}

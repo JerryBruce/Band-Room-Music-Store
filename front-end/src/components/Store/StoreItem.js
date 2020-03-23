@@ -1,10 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import StoreDetails from './StoreDetails';
-import { getItems } from '../../state/actions/items';
-import { getDetails } from '../../state/actions/items';
-import { toggleStore } from '../../state/actions/toggle';
+import StoreDetails from "./StoreDetails";
+import { getItems } from "../../state/actions/items";
+import { getDetails } from "../../state/actions/items";
+import { toggleStore } from "../../state/actions/toggle";
 
 class StoreItem extends React.Component {
   constructor(props) {
@@ -24,29 +24,30 @@ class StoreItem extends React.Component {
   render() {
     const items = this.props.items.map(item => {
       return (
-        <div className='store-item f-co-c-sb' key={item._id}>
-          <div className='store-item-container as-c js-c'>
+        <div className="store-item f-co-c-sb" key={item._id}>
+          <div className="store-item-container as-c js-c">
             <img
               src={`http://localhost:3000/items/${item._id}/image`}
-              alt='item'
-              className='store-item-image'
+              alt="item"
+              className="store-item-image"
             />
           </div>
-          <div className='store-item-details f-co-l-sa'>
-            <div className='store-item-name'>{item.name}</div>
-            <div className='store-item-price'>
+          <div className="store-item-details f-co-l-sa">
+            <div className="store-item-name">{item.name}</div>
+            <div className="store-item-price">
               As Low as
               <br />
-              <span className='red'>${item.rent}/Month</span>
+              <span className="red">${item.rent}/Month</span>
             </div>
-            <div className='store-item-stock'>
-              <span className='green'>In Stock</span>
+            <div className="store-item-stock">
+              <span className="green">In Stock</span>
             </div>
-            <div className='store-item-btns f-c-sa'>
+            <div className="store-item-btns f-c-sa">
               <button
-                className='store-item-info'
+                className="store-item-info"
                 value={item._id}
-                onClick={e => this.clickHandler(e)}>
+                onClick={e => this.clickHandler(e)}
+              >
                 More Details
               </button>
             </div>
@@ -54,11 +55,7 @@ class StoreItem extends React.Component {
         </div>
       );
     });
-    return !this.props.storeOpen ? (
-      <div className='if fw f-c-c'>{items}</div>
-    ) : (
-      <StoreDetails />
-    );
+    return <div className="if fw f-c-c">{items}</div>;
   }
 }
 

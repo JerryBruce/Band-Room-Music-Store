@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import { toggleCreate } from '../../state/actions/toggle';
-import { createItem, getItems } from '../../state/actions/items';
+import { toggleCreate } from "../../state/actions/toggle";
+import { createItem, getItems } from "../../state/actions/items";
 
 class CreateItem extends React.Component {
   constructor() {
@@ -29,78 +29,75 @@ class CreateItem extends React.Component {
   }
 
   clearForm() {
-    this.refs.name.value = '';
-    this.refs.brand.value = '';
-    this.refs.series.value = '';
-    this.refs.stock.value = '';
-    this.refs.description.value = '';
-    this.refs.rent.value = '';
-    this.refs.buy.value = '';
-    this.refs.image.value = '';
+    this.refs.name.value = "";
+    this.refs.brand.value = "";
+    this.refs.series.value = "";
+    this.refs.stock.value = "";
+    this.refs.description.value = "";
+    this.refs.rent.value = "";
+    this.refs.buy.value = "";
+    this.refs.image.value = "";
   }
 
   render() {
     return (
-      <div className='create-item f-co-c-sa'>
+      <div className="create-item f-co-c-sa">
         <form
-          className='create-form f-co-c-sa'
-          action='submit'
-          onSubmit={this.handleSubmit}>
+          className="form f-co-c-sa"
+          action="submit"
+          onSubmit={this.handleSubmit}
+        >
           <input
-            className='create-form-input'
-            type='text'
-            ref='name'
-            placeholder='Name'
+            className="form-input"
+            type="text"
+            ref="name"
+            placeholder="Name"
           />
           <input
-            className='create-form-input'
-            type='text'
-            ref='brand'
-            placeholder='brand'
+            className="form-input"
+            type="text"
+            ref="brand"
+            placeholder="brand"
           />
           <input
-            className='create-form-input'
-            type='text'
-            ref='series'
-            placeholder='series'
+            className="form-input"
+            type="text"
+            ref="series"
+            placeholder="series"
           />
           <input
-            className='create-form-input'
-            type='number'
-            ref='stock'
-            placeholder='stock'
+            className="form-input"
+            type="number"
+            ref="stock"
+            placeholder="stock"
           />
           <textarea
-            className='create-form-desc'
-            type='text'
-            ref='description'
-            placeholder='description'
+            className="form-message"
+            type="text"
+            ref="description"
+            placeholder="description"
           />
           <input
-            className='create-form-input'
-            type='number'
-            ref='rent'
-            placeholder='rent price'
+            className="form-input"
+            type="number"
+            ref="rent"
+            placeholder="rent price"
           />
           <input
-            className='create-form-input'
-            type='number'
-            ref='buy'
-            placeholder='buy price'
+            className="form-input"
+            type="number"
+            ref="buy"
+            placeholder="buy price"
           />
-          <input
-            type='file'
-            className='create-form-input'
-            name='image'
-            ref='image'
-          />
-          <div className='f-co-c-sb create-form-btns'>
-            <button className='btn-long btn-green' type='submit'>
+          <input type="file" className="form-input" name="image" ref="image" />
+          <div className="f-co-c-sb form-btns">
+            <button className="btn-long btn-green" type="submit">
               Submit
             </button>
             <button
-              className='btn-blue btn-long'
-              onClick={() => this.props.toggleCreate()}>
+              className="btn-blue btn-long"
+              onClick={() => this.props.toggleCreate()}
+            >
               Back to Dashboard
             </button>
           </div>
