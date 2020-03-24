@@ -4,6 +4,9 @@
   padding: 1rem;
   background-color: $greybox;
   color: white;
+  &-container {
+    width: 100%;
+  }
   &-circles {
     height: 100%;
     display: flex;

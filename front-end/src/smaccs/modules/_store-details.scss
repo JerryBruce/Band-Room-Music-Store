@@ -1,6 +1,33 @@
-.store-details {
-  height: 100vh;
-  background-color: $primary;
-  visibility: hidden;
-  opacity: 0;
+.detail {
+  padding-top: 2rem;
+  &-img {
+    padding: 1rem 0 1rem 0;
+  }
+  &-text {
+    width: 100%;
+  }
+  &-series {
+    padding: 1rem 0 1rem 0;
+  }
+  &-desc {
+    font-size: 1.2rem;
+    text-align: left;
+    width: 20rem;
+  }
+  &-info {
+    margin-left: 2rem;
+  }
+  &-prices {
+    margin: 1rem 0 1rem 2rem;
+  }
+  &-btns {
+    height: 12rem;
+  }
+  .dollar {
+    font-size: 2rem;
+  }
+}
+
+.inquiry {
+  height: 72vh;
 }
