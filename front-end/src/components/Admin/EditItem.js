@@ -31,54 +31,55 @@ class EditItem extends React.Component {
     const current = this.props.currentItem;
     return (
       <div className="create-item f-co-c-sa">
+        <h1 className="form-heading">Edit {current.name}</h1>
         <form
-          className="create-form f-co-c-sa"
+          className="form f-co-c-sa"
           action="submit"
           onSubmit={this.handleSubmit}
         >
           <input
-            className="create-form-input"
+            className="form-input"
             type="text"
             ref="name"
             placeholder={current.name}
           />
           <input
-            className="create-form-input"
+            className="form-input"
             type="text"
             ref="brand"
             placeholder={current.brand}
           />
           <input
-            className="create-form-input"
+            className="form-input"
             type="text"
             ref="series"
             placeholder={current.series}
           />
           <input
-            className="create-form-input"
+            className="form-input"
             type="number"
             ref="stock"
             placeholder={current.stock}
           />
           <textarea
-            className="create-form-desc"
+            className="form-message"
             type="text"
             ref="description"
             placeholder={current.description}
           />
           <input
-            className="create-form-input"
+            className="form-input"
             type="number"
             ref="rent"
             placeholder={current.rent}
           />
           <input
-            className="create-form-input"
+            className="form-input"
             type="number"
             ref="buy"
             placeholder={current.buy}
           />
-          <div className="f-co-c-sb">
+          <div className="form-btns f-co-c-sb">
             <button className="btn-long btn-green" type="submit">
               Submit
             </button>

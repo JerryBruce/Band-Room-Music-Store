@@ -38,7 +38,7 @@ class Dash extends Component {
         <div className="store-item f-co-c-sb" key={item._id}>
           <div className="store-item-container as-c js-c">
             <img
-              src={`http://localhost:3000/items/${item._id}/image`}
+              src={`http://localhost:3000/items/${item._id}/small`}
               alt="item"
               className="store-item-image"
             />
@@ -80,15 +80,15 @@ class Dash extends Component {
     ) {
       return (
         <div className="dash f-co-c-sa">
-          <div className="store-item-btns f-c-sa">
+          <div className="dash-btns f-co-c-sa">
             <button
-              className="btn btn-blue"
+              className="btn-long btn-black"
               onClick={() => this.props.toggleCreate()}
             >
               Add Item
             </button>
             <button
-              className="btn btn-blue"
+              className="btn-long btn-black"
               onClick={() => this.props.logOut()}
             >
               Logout

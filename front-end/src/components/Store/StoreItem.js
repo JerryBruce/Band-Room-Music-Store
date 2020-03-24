@@ -14,6 +14,7 @@ class StoreItem extends React.Component {
 
   componentDidMount() {
     this.props.getItems();
+    console.log(this.props.items);
   }
 
   clickHandler(e) {
@@ -26,14 +27,15 @@ class StoreItem extends React.Component {
       return (
         <div className="store-item f-co-c-sb" key={item._id}>
           <div className="store-item-container as-c js-c">
+            <h1 className="store-item-name js-c">{item.name}</h1>
             <img
-              src={`http://localhost:3000/items/${item._id}/image`}
+              src={`http://localhost:3000/items/${item._id}/small`}
               alt="item"
               className="store-item-image"
             />
           </div>
           <div className="store-item-details f-co-l-sa">
-            <div className="store-item-name">{item.name}</div>
+            <p className="store-item-series">{item.series}</p>
             <div className="store-item-price">
               As Low as
               <br />
@@ -44,7 +46,7 @@ class StoreItem extends React.Component {
             </div>
             <div className="store-item-btns f-c-sa">
               <button
-                className="store-item-info"
+                className="btn-long btn-black"
                 value={item._id}
                 onClick={e => this.clickHandler(e)}
               >

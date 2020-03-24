@@ -1,6 +1,10 @@
 .form {
   margin: 3rem 0 3rem 0;
-
+  &-heading {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
   &-input {
     height: 3rem;
     width: 80vw;
@@ -12,6 +16,7 @@
     margin: 0.3rem;
   }
   &-btns {
+    margin-top: 1.5rem;
     height: 7rem;
   }
 }

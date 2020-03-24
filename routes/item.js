@@ -1,12 +1,12 @@
-const express = require('express');
-const sharp = require('sharp');
-const Item = require('../models/Item');
-const auth = require('../middleware/auth');
-const upload = require('../middleware/image');
+const express = require("express");
+const sharp = require("sharp");
+const Item = require("../models/Item");
+const auth = require("../middleware/auth");
+const upload = require("../middleware/image");
 
 const router = express.Router();
 
-router.post('/items', auth, async (req, res) => {
+router.post("/items", auth, async (req, res) => {
   const item = new Item({
     ...req.body
   });
@@ -28,7 +28,7 @@ router.get("/items", async (req, res) => {
   }
 });
 
-router.patch('/items/:id', auth, async (req, res) => {
+router.patch("/items/:id", auth, async (req, res) => {
   const updates = Object.keys(req.body);
 
   try {
@@ -45,7 +45,7 @@ router.patch('/items/:id', auth, async (req, res) => {
   }
 });
 
-router.delete('/items/:id', auth, async (req, res) => {
+router.delete("/items/:id", auth, async (req, res) => {
   try {
     const item = await Item.findOneAndDelete({
       _id: req.params.id
@@ -72,11 +72,11 @@ router.patch(
     const item = await Item.findOne({ _id });
 
     const small = await sharp(req.file.buffer)
-      .resize({ width: 250, height: 250 })
+      .resize({ width: 150, height: 150 })
       .png()
       .toBuffer();
     const medium = await sharp(req.file.buffer)
-      .resize({ width: 350, height: 350 })
+      .resize({ width: 250, height: 250 })
       .png()
       .toBuffer();
     const large = await sharp(req.file.buffer)
