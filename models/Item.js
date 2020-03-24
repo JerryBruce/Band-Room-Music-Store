@@ -24,9 +24,14 @@ const itemSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  image: {
-    type: Buffer,
-    required: false
+  imageSm: {
+    type: Buffer
+  },
+  imageMed: {
+    type: Buffer
+  },
+  imageLg: {
+    type: Buffer
   },
   rent: {
     type: String,
