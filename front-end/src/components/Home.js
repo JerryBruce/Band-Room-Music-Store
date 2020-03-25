@@ -1,23 +1,26 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class Home extends Component {
   render() {
     return (
       <div className="home">
-        <div className="hero"></div>
-        <div className="home-body f-co-c-sa">
-          <div className="tag">
-            <h2 className="heading-tag">Tag Line</h2>
-            <p className="tag-text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Necessitatibus, quos. Dicta cum beatae adipisci, aperiam eos,
-              voluptas nam dolore quaerat, totam iusto iure ab similique minima
-              officia maxime. Velit, possimus?
-            </p>
-          </div>
-          <div className="cta f-c-sa">
-            <button className="btn-cta">See Our Store</button>
-            <button className="btn-cta">Send Us a Message</button>
+        <div className="hero">
+          <div className="hero-content f-co-l-sa">
+            <div className="tag">
+              <h2 className="tag-heading">Tag Line</h2>
+              <p className="tag-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Necessitatibus, quos. Dicta cum beatae adipisci, aperiam eos,
+                voluptas nam dolore quaerat, totam iusto iure ab similique
+                minima officia maxime. Velit, possimus?
+              </p>
+            </div>
+            <div className="cta f-co-c-sa">
+              <button className="btn btn-red">
+                <Link to="/store">See Our Store</Link>
+              </button>
+            </div>
           </div>
         </div>
       </div>

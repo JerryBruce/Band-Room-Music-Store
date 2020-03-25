@@ -1,24 +1,28 @@
 .hero {
-  background-color: $greybox;
-  height: 30vh;
+  height: 72vh;
   width: 100%;
-  background-image: url(../../images/horn-players.jpg);
-  background-size: cover;
-}
-.home-body {
-  height: 42vh;
+  background-image: url(../../images/FrenchHorn.jpg);
+  background-size: 200%;
+  background-repeat: no-repeat;
+  background-position: 30% 0%;
+  padding: 3rem 0 0 1.5rem;
+  &-content {
+    width: 60vw;
+  }
 }
 .tag {
-  width: 75%;
-  margin-right: 20%;
-
+  color: white;
+  &-heading {
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+  }
   &-text {
     font-size: 1.3rem;
-    margin: 0.5rem;
+    text-align: justify;
   }
 }
 
 .cta {
+  height: 10rem;
   width: 100%;
-  margin-top: 3%;
 }

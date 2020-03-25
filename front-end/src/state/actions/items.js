@@ -1,11 +1,11 @@
-import { ITEMS_RECIEVED, ITEM_DELETED, ITEM_UPDATED } from './types';
-import { ITEM_RECIEVED } from './types';
-import { ITEM_CREATED } from './types';
-import { local } from '../../api';
+import { ITEMS_RECIEVED, ITEM_DELETED, ITEM_UPDATED } from "./types";
+import { ITEM_RECIEVED } from "./types";
+import { ITEM_CREATED } from "./types";
+import { local } from "../../api";
 
 export const getItems = () => {
   return async function(dispatch) {
-    const res = await local.get('/items');
+    const res = await local.get("/items");
     dispatch({ type: ITEMS_RECIEVED, payload: res.data });
   };
 };
@@ -22,7 +22,7 @@ export const createItem = (item, image) => {
     const state = getState();
     const Authorization = state.loginReducer.header.headers.Authorization;
     const fd = new FormData();
-    fd.append('image', image);
+    fd.append("image", image);
     const options = {
       headers: {
         Authorization
@@ -32,15 +32,11 @@ export const createItem = (item, image) => {
     const imageOptions = {
       headers: {
         Authorization,
-        'Content-Type': 'multipart/form-data'
+        "Content-Type": "multipart/form-data"
       }
     };
-    const res = await local.post('/items', null, options);
-    const upload = await local.patch(
-      `/items/${res.data._id}/image`,
-      fd,
-      imageOptions
-    );
+    const res = await local.post("/items", null, options);
+    await local.patch(`/items/${res.data._id}/image`, fd, imageOptions);
     dispatch({ type: ITEM_CREATED, payload: res.data });
   };
 };
@@ -69,7 +65,7 @@ export const deleteItem = item => {
     const header = {
       headers: {
         Authorization: state.loginReducer.header.headers.Authorization,
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       }
     };
     const res = await local.delete(`/items/${item}`, header);

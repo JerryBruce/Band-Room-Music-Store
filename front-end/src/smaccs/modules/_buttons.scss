@@ -10,8 +10,9 @@
   border: none;
   color: white;
   height: 4rem;
-  width: 7rem;
+  width: 12rem;
   border-radius: 4px;
+  cursor: pointer;
   &-long {
     width: 20rem;
     height: 3rem;
@@ -25,7 +26,7 @@
   background-color: green;
 }
 .btn-red {
-  background-color: red;
+  background-color: $secondary;
 }
 .btn-black {
   background-color: black;

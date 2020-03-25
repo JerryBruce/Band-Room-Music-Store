@@ -8,7 +8,7 @@ export class Nav extends Component {
   render() {
     return (
       <div className='nav f-c-sb'>
-        <div className='logo'>The Band Room Music Store</div>
+        <div className='logo'></div>
         <div className='menu f-c-c' onClick={() => this.props.toggleNav()}>
           <div className='nav-icon'></div>
         </div>

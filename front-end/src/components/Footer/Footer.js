@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import MediaIcon from "./MediaIcon";
 
 export class Footer extends Component {
@@ -6,9 +7,11 @@ export class Footer extends Component {
     return (
       <div className="footer-container">
         <div className="footer  f-c-sa">
-          <div className="footer-circles f-c-c">
+          <div className="footer-circles f-co-c">
             <div className="footer-img ">
-              <img src="" alt="" className="profile" />
+              <Link to="/">
+                <img src="" alt="" className="profile" />
+              </Link>
             </div>
             <div className="media-icons f-c-sb">
               <MediaIcon
@@ -55,23 +58,40 @@ export class Footer extends Component {
               />
             </div>
           </div>
-          <div className="phone-email">
-            <div className="contact-phone">
-              Give Us a Call <br /> (900)900-9000
-            </div>
-            <div className="contact-email">
-              Send Us an Email <br /> Lakewaymusic@Yahoo.com
-            </div>
+
+          <div className="links-container f-co-c-sb">
+            <button className="link-btn">
+              <Link className="link" to="/">
+                Home
+              </Link>
+            </button>
+            <button className="link-btn">
+              <Link className="link" to="/">
+                Store
+              </Link>
+            </button>
+            <button className="link-btn">
+              <Link className="link" to="/">
+                Contact
+              </Link>
+            </button>
           </div>
-          <div className="links-container f-c-c">
-            <div className="links">
-              <button className="link">Link</button>
-              <button className="link">Link</button>
-              <button className="link">Link</button>
-              <button className="link">Link</button>
-              <button className="link">Link</button>
-              <button className="link">Link</button>
-            </div>
+          <div className="links-container f-co-c-sb">
+            <button className="link-btn">
+              <Link className="link" to="/">
+                About
+              </Link>
+            </button>
+            <button className="link-btn">
+              <Link className="link" to="/">
+                Gallery
+              </Link>
+            </button>
+            <button className="link-btn">
+              <Link className="link" to="/">
+                CatCo
+              </Link>
+            </button>
           </div>
         </div>
       </div>

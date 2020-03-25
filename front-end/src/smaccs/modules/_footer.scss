@@ -9,19 +9,18 @@
   }
   &-circles {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     color: white;
   }
   &-img {
     height: 7rem;
     width: 7rem;
     border-radius: 50%;
-    background-image: url("../../images/portrait.jpg");
-    background-size: cover;
+    background-image: url("../../images/BR-Logo.svg");
+    background-size: 5.3rem;
+    background-repeat: no-repeat;
     background-position: center;
-    color: white;
+    background-color: white;
+    cursor: pointer;
   }
   &-media {
     height: 2rem;
@@ -45,29 +44,18 @@
   }
 }
 
-.phone-email {
-  display: flex;
-  flex-direction: column;
-  margin-left: 1rem;
-  &-phone {
-    margin-bottom: 1rem;
-  }
-}
-
-.links {
-  height: 10rem;
-  width: 100%;
-  margin-top: 1rem;
-  color: white;
-  &-container {
-    width: 50%;
-  }
+.links-container {
+  height: 100%;
+  width: 50%;
 }
 .link {
-  height: 3rem;
-  width: 50%;
-  border: none;
-  background: transparent;
-  padding: 0;
   color: white;
+  cursor: pointer;
+  font-size: 1.6rem;
+  &-btn {
+    border: none;
+    background: transparent;
+    height: 3rem;
+    width: 7.5rem;
+  }
 }
