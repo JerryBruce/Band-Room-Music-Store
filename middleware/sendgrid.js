@@ -5,7 +5,7 @@ sgMail.setApiKey(keys.sendgridKey);
 
 const sendInquiryEmail = (email, name, phone, address, message) => {
     sgMail.send({
-      to: "Hembysam4@gmail.com",
+      to: keys.email,
       from: email,
       subject: "Rental Inquiry",
       text: `See the below customer details:
