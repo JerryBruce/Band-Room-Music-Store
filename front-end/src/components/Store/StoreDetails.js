@@ -18,7 +18,7 @@ const StoreDetails = props => {
           <h1 className="detail-header">{item.name}</h1>
           <img
             className="detail-img"
-            src={`http://localhost:3000/items/${item._id}/small`}
+            src={`http://localhost:3000/items/${item._id}/medium`}
             alt=""
           />
         </div>

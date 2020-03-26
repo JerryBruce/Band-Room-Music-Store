@@ -36,15 +36,15 @@ class Dash extends Component {
     const items = this.props.items.map(item => {
       return (
         <div className="store-item f-co-c-sb" key={item._id}>
-          <div className="store-item-container as-c js-c">
-            <img
-              src={`http://localhost:3000/items/${item._id}/small`}
-              alt="item"
-              className="store-item-image"
-            />
-          </div>
+          <h1 className="store-item-name js-c">{item.name}</h1>
+          <img
+            src={`http://localhost:3000/items/${item._id}/small`}
+            alt="item"
+            className="store-item-image"
+          />
+
           <div className="store-item-details f-co-l-sa">
-            <div className="store-item-name">{item.name}</div>
+            <p className="store-item-series">{item.series}</p>
             <div className="store-item-price">
               As Low as
               <br />
@@ -53,22 +53,22 @@ class Dash extends Component {
             <div className="store-item-stock">
               <span className="green">In Stock</span>
             </div>
-            <div className="store-item-btns f-c-sa">
-              <button
-                className="btn btn-black"
-                value={item._id}
-                onClick={e => this.handleEdit(e)}
-              >
-                Edit Item
-              </button>
-              <button
-                className="btn btn-red"
-                value={item._id}
-                onClick={e => this.handleDelete(e)}
-              >
-                Delete Item
-              </button>
-            </div>
+          </div>
+          <div className="item-btns f-co-c-sb">
+            <button
+              className="btn btn-black"
+              value={item._id}
+              onClick={e => this.handleEdit(e)}
+            >
+              Edit Item
+            </button>
+            <button
+              className="btn btn-red"
+              value={item._id}
+              onClick={e => this.handleDelete(e)}
+            >
+              Delete Item
+            </button>
           </div>
         </div>
       );
@@ -94,7 +94,7 @@ class Dash extends Component {
               Logout
             </button>
           </div>
-          <div className="if fw f-c-c">{items}</div>
+          <div className="store-items if fw">{items}</div>
         </div>
       );
     } else if (

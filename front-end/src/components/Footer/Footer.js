@@ -7,7 +7,7 @@ export class Footer extends Component {
     return (
       <div className="footer-container">
         <div className="footer  f-c-sa">
-          <div className="footer-circles f-co-c">
+          <div className="footer-circles f-co-c-c">
             <div className="footer-img ">
               <Link to="/">
                 <img src="" alt="" className="profile" />

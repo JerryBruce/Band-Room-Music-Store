@@ -26,14 +26,12 @@ class StoreItem extends React.Component {
     const items = this.props.items.map(item => {
       return (
         <div className="store-item f-co-c-sb" key={item._id}>
-          <div className="store-item-container as-c js-c">
-            <h1 className="store-item-name js-c">{item.name}</h1>
-            <img
-              src={`http://localhost:3000/items/${item._id}/small`}
-              alt="item"
-              className="store-item-image"
-            />
-          </div>
+          <h1 className="store-item-name js-c">{item.name}</h1>
+          <img
+            src={`http://localhost:3000/items/${item._id}/small`}
+            alt="item"
+            className="store-item-image"
+          />
           <div className="store-item-details f-co-l-sa">
             <p className="store-item-series">{item.series}</p>
             <div className="store-item-price">
@@ -44,20 +42,20 @@ class StoreItem extends React.Component {
             <div className="store-item-stock">
               <span className="green">In Stock</span>
             </div>
-            <div className="store-item-btns f-c-sa">
-              <button
-                className="btn-long btn-black"
-                value={item._id}
-                onClick={e => this.clickHandler(e)}
-              >
-                More Details
-              </button>
-            </div>
+          </div>
+          <div className="store-item-btns">
+            <button
+              className="btn btn-black"
+              value={item._id}
+              onClick={e => this.clickHandler(e)}
+            >
+              More Details
+            </button>
           </div>
         </div>
       );
     });
-    return <div className="if fw f-c-c">{items}</div>;
+    return <div className="store-items if fw">{items}</div>;
   }
 }
 

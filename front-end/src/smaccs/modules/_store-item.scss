@@ -4,11 +4,15 @@
   &-page {
     height: 15vh;
   }
+  &-items {
+    width: 100%;
+  }
 }
 
 .store-item {
-  margin: 0 0.5rem 2rem 0.5rem;
   position: relative;
+  margin-bottom: 2rem;
+  width: 48%;
   &-container {
     width: 100%;
     margin: auto;
@@ -20,9 +24,12 @@
     width: 100%;
     padding-top: 1rem;
   }
+  &-details {
+    padding-left: 1.5rem;
+  }
   &-name {
     font-size: 2.5rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
     text-align: center;
   }
   &-stock {
@@ -41,5 +48,8 @@
     width: 48%;
     border-radius: 0.4rem;
     cursor: pointer;
+  }
+  &-btns {
+    margin: auto;
   }
 }
