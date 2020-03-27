@@ -6,8 +6,9 @@ import {
   TOGGLE_CREATE,
   TOGGLE_ALL,
   TOGGLE_CONFIRM,
-  TOGGLE_EDIT
-} from './types';
+  TOGGLE_EDIT,
+  TOGGLE_EDIT_IMAGE
+} from "./types";
 
 export const toggleAll = () => {
   return {
@@ -48,6 +49,12 @@ export const toggleCreate = () => {
 export const toggleConfirm = () => {
   return {
     type: TOGGLE_CONFIRM
+  };
+};
+
+export const toggleEditImage = () => {
+  return {
+    type: TOGGLE_EDIT_IMAGE
   };
 };
 

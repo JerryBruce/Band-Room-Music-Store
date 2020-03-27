@@ -6,8 +6,9 @@ import {
   TOGGLE_CREATE,
   TOGGLE_ALL,
   TOGGLE_CONFIRM,
-  TOGGLE_EDIT
-} from '../actions/types';
+  TOGGLE_EDIT,
+  TOGGLE_EDIT_IMAGE
+} from "../actions/types";
 
 const toggleReducer = (
   state = {
@@ -16,7 +17,8 @@ const toggleReducer = (
     buyOpen: false,
     rentOpen: false,
     createOpen: false,
-    confirmOpen: false
+    confirmOpen: false,
+    editImageOpen: false
   },
   action
 ) => {
@@ -45,6 +47,8 @@ const toggleReducer = (
       return { ...state, confirmOpen: !state.confirmOpen };
     case TOGGLE_EDIT:
       return { ...state, editOpen: !state.editOpen };
+    case TOGGLE_EDIT_IMAGE:
+      return { ...state, editImageOpen: !state.editImageOpen };
     default:
       return state;
   }

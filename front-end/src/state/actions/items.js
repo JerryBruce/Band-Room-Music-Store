@@ -53,10 +53,25 @@ export const editItem = item => {
       data: item
     };
     const res = await local.patch(`/items/${id}`, null, options);
-    dispatch({
-      type: ITEM_UPDATED,
-      payload: item
-    });
+    dispatch({ type: ITEM_UPDATED });
+  };
+};
+
+export const editImage = image => {
+  return async function(dispatch, getState) {
+    const state = getState();
+    const Authorization = state.loginReducer.header.headers.Authorization;
+    const current = state.itemsReducer.currentItem._id;
+    const fd = new FormData();
+    fd.append("image", image);
+    const imageOptions = {
+      headers: {
+        Authorization,
+        "Content-Type": "multipart/form-data"
+      }
+    };
+    await local.patch(`/items/${current}/image`, fd, imageOptions);
+    dispatch({ type: ITEM_UPDATED });
   };
 };
 
