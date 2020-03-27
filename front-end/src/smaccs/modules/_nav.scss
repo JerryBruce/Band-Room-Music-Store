@@ -63,9 +63,38 @@
   }
 }
 
-// .isOpen {
-//   visibility: visible;
-//   opacity: 1;
-//   transition: 0.3s;
-//   z-index: 100;
-// }
+@media screen and (min-width: 400px) {
+  .nav {
+    height: 10vh;
+    width: 100%;
+    background-color: $primary;
+    padding: 2rem;
+    &-icon {
+      position: relative;
+      &,
+      &::before,
+      &::after {
+        width: 3rem;
+        height: 0.3rem;
+        background-color: white;
+        display: inline-block;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: -0.8rem;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0.8rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 700px) {
+}
+
+@media screen and (min-width: 900px) {
+}

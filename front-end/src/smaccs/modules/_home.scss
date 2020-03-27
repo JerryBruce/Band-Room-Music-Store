@@ -1,5 +1,4 @@
 .hero {
-  height: 72vh;
   width: 100%;
   background-image: url(../../images/FrenchHorn.jpg);
   background-size: 200%;
@@ -17,12 +16,57 @@
     font-size: 2rem;
   }
   &-text {
+    margin-bottom: 1.5rem;
     font-size: 1.3rem;
     text-align: justify;
   }
 }
 
-.cta {
-  height: 10rem;
-  width: 100%;
+@media screen and (min-width: 400px) {
+  .hero {
+    background-size: 150%;
+    background-position: 30% 20%;
+    &-content {
+      width: 50vw;
+    }
+  }
+  .tag {
+    &-heading {
+      margin-bottom: 1rem;
+      font-size: 3rem;
+    }
+    &-text {
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+      text-align: justify;
+    }
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .hero {
+    background-size: 125%;
+    background-position: 40% 30%;
+    &-content {
+      width: 40vw;
+    }
+  }
+  .tag {
+    color: white;
+    &-heading {
+      margin-bottom: 2rem;
+      font-size: 3rem;
+    }
+    &-text {
+      font-size: 2rem;
+      text-align: justify;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .hero {
+    padding: 4.5rem 0 0 3.5rem;
+  }
 }
