@@ -14,6 +14,7 @@ class CreateItem extends React.Component {
   async handleSubmit(e) {
     e.preventDefault();
     const item = {
+      product: this.refs.product.value,
       name: this.refs.name.value,
       brand: this.refs.brand.value,
       series: this.refs.series.value,
@@ -29,6 +30,7 @@ class CreateItem extends React.Component {
   }
 
   clearForm() {
+    this.refs.product.value = "";
     this.refs.name.value = "";
     this.refs.brand.value = "";
     this.refs.series.value = "";
@@ -46,7 +48,14 @@ class CreateItem extends React.Component {
           className="form f-co-c-sa"
           action="submit"
           onSubmit={this.handleSubmit}
+          encType="multipart/form-data"
         >
+          <input
+            type="text"
+            className="form-input"
+            ref="product"
+            placeholder="product type"
+          />
           <input
             className="form-input"
             type="text"

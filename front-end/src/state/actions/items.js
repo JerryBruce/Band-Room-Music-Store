@@ -44,14 +44,15 @@ export const createItem = (item, image) => {
 export const editItem = item => {
   return async function(dispatch, getState) {
     const state = getState();
+    const Authorization = state.loginReducer.header.headers.Authorization;
     const id = state.itemsReducer.currentItem._id;
     const options = {
       headers: {
-        Authorization: state.loginReducer.header.headers.Authorization
+        Authorization
       },
       data: item
     };
-    await local.patch(`/items/${id}`, null, options);
+    const res = await local.patch(`/items/${id}`, null, options);
     dispatch({
       type: ITEM_UPDATED,
       payload: item

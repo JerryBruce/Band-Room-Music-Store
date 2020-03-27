@@ -3,7 +3,7 @@ import {
   ITEM_RECIEVED,
   ITEM_CREATED,
   ITEM_DELETED
-} from '../actions/types';
+} from "../actions/types";
 
 const itemsReducer = (
   state = {

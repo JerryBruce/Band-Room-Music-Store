@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const itemSchema = new mongoose.Schema({
   name: {
@@ -6,7 +6,7 @@ const itemSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  instrument: {
+  product: {
     type: String,
     required: true,
     trim: true
@@ -48,6 +48,6 @@ const itemSchema = new mongoose.Schema({
   }
 });
 
-const Item = mongoose.model('Item', itemSchema);
+const Item = mongoose.model("Item", itemSchema);
 
 module.exports = Item;

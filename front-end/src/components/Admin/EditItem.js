@@ -13,6 +13,7 @@ class EditItem extends React.Component {
   async handleSubmit(e) {
     e.preventDefault();
     const item = {
+      product: this.refs.product.value,
       name: this.refs.name.value,
       brand: this.refs.brand.value,
       series: this.refs.series.value,
@@ -21,7 +22,6 @@ class EditItem extends React.Component {
       rent: this.refs.rent.value,
       buy: this.refs.buy.value
     };
-
     await this.props.editItem(item);
     this.props.getItems();
     this.props.toggleEdit();
@@ -38,46 +38,60 @@ class EditItem extends React.Component {
           onSubmit={this.handleSubmit}
         >
           <input
+            type="text"
+            className="form-input"
+            ref="product"
+            placeholder={current.product}
+            defaultValue={current.product}
+          />
+          <input
             className="form-input"
             type="text"
             ref="name"
             placeholder={current.name}
+            defaultValue={current.name}
           />
           <input
             className="form-input"
             type="text"
             ref="brand"
             placeholder={current.brand}
+            defaultValue={current.brand}
           />
           <input
             className="form-input"
             type="text"
             ref="series"
             placeholder={current.series}
+            defaultValue={current.series}
           />
           <input
             className="form-input"
             type="number"
             ref="stock"
             placeholder={current.stock}
+            defaultValue={current.stock}
           />
           <textarea
             className="form-message"
             type="text"
             ref="description"
             placeholder={current.description}
+            defaultValue={current.description}
           />
           <input
             className="form-input"
             type="number"
             ref="rent"
             placeholder={current.rent}
+            defaultValue={current.rent}
           />
           <input
             className="form-input"
             type="number"
             ref="buy"
             placeholder={current.buy}
+            defaultValue={current.buy}
           />
           <div className="form-btns f-co-c-sb">
             <button className="btn-long btn-green" type="submit">

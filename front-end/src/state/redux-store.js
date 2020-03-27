@@ -1,11 +1,11 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import { rootReducer } from './reducers';
-import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, compose } from "redux";
+import { rootReducer } from "./reducers";
+import thunk from "redux-thunk";
 
 const saveToSessionStorage = state => {
   try {
     const serializedState = JSON.stringify(state);
-    sessionStorage.setItem('state', serializedState);
+    sessionStorage.setItem("state", serializedState);
   } catch (e) {
     console.log(e);
   }
@@ -13,7 +13,7 @@ const saveToSessionStorage = state => {
 
 const loadFromSessionStorage = () => {
   try {
-    const serializedState = sessionStorage.getItem('state');
+    const serializedState = sessionStorage.getItem("state");
     if (serializedState === null) return undefined;
     return JSON.parse(serializedState);
   } catch (e) {
