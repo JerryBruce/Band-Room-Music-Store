@@ -14,7 +14,6 @@ class StoreItem extends React.Component {
 
   componentDidMount() {
     this.props.getItems();
-    console.log(this.props.items);
   }
 
   clickHandler(e) {

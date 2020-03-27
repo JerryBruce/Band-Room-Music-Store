@@ -1,4 +1,3 @@
-import store from "../redux-store";
 
 import { local } from "../../api";
 import {
@@ -30,8 +29,8 @@ export const tokenSend = () => {
   };
 };
 
-export const logOut = () => {
-  const state = store.getState();
+export const logOut = (getState) => {
+  const state = getState();
   const header = state.loginReducer.header;
   return async function(dispatch) {
     await local.post("/admin/logout", null, header);

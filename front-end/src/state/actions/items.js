@@ -1,7 +1,12 @@
-import { ITEMS_RECIEVED, ITEM_DELETED, ITEM_UPDATED } from "./types";
-import { ITEM_RECIEVED } from "./types";
-import { ITEM_CREATED } from "./types";
+import {
+  ITEMS_RECIEVED,
+  ITEM_DELETED,
+  ITEM_UPDATED,
+  ITEM_RECIEVED,
+  ITEM_CREATED
+} from "./types";
 import { local } from "../../api";
+import Axios from "axios";
 
 export const getItems = () => {
   return async function(dispatch) {
@@ -27,7 +32,9 @@ export const createItem = (item, image) => {
       headers: {
         Authorization
       },
-      data: item
+      data: item,
+      method: "POST",
+      url: "http://localhost:3000/items"
     };
     const imageOptions = {
       headers: {
@@ -35,7 +42,7 @@ export const createItem = (item, image) => {
         "Content-Type": "multipart/form-data"
       }
     };
-    const res = await local.post("/items", null, options);
+    const res = await Axios(options);
     await local.patch(`/items/${res.data._id}/image`, fd, imageOptions);
     dispatch({ type: ITEM_CREATED, payload: res.data });
   };

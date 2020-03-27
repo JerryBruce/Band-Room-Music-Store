@@ -14,4 +14,5 @@ export const ITEM_CREATED = "ITEM_CREATED";
 export const TOGGLE_CREATE = "TOGGLE_CREATE";
 export const TOGGLE_ALL = "TOGGLE_ALL";
 export const ITEM_DELETED = "ITEM_DELETED";
-export const ITEM_UPDATED = ["ITEM_UPDATED"];
+export const ITEM_UPDATED = "ITEM_UPDATED";
+export const NOTIFICATION_SENT = "NOTIFICATION_SENT";
