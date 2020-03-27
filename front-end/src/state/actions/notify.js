@@ -10,6 +10,8 @@ export const notify = inquiry => {
       data: inquiry
     };
     console.log(options);
-    Axios(options);
+    Axios(options).then(res => {
+      console.log(res);
+    });
   };
 };
