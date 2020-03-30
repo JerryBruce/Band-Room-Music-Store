@@ -1,15 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { rootReducer } from './reducers';
 import thunk from 'redux-thunk';
-
-// const saveToSessionStorage = state => {
-//   try {
-//     const serializedState = JSON.stringify(state);
-//     sessionStorage.setItem('login', serializedState);
-//   } catch (e) {
-//     console.log(e);
-//   }
-// };
+import logger from 'redux-logger';
 
 const loadFromSessionStorage = () => {
   try {
@@ -27,12 +19,7 @@ const persistedState = loadFromSessionStorage();
 const store = createStore(
   rootReducer,
   persistedState,
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+  compose(applyMiddleware(thunk, logger))
 );
-
-// store.subscribe(()=> saveToSessionStorage(store.getState()));
 
 export default store;

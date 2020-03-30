@@ -23,9 +23,9 @@ export const getDetails = item => {
 };
 
 export const createItem = (item, image) => {
-  return function(dispatch, getState) {
+  return async function(dispatch, getState) {
     const state = getState();
-    const Authorization = state.loginReducer.header.headers.Authorization;
+    const Authorization = state.loginReducer.header.Authorization;
     const fd = new FormData();
     fd.append('image', image);
     const options = {
@@ -42,29 +42,26 @@ export const createItem = (item, image) => {
         'Content-Type': 'multipart/form-data'
       }
     };
-    Axios(options)
-      .then(response => {
-        local.patch(`/items/${response.data._id}/image`, fd, imageOptions);
-      })
-      .catch(err => {
-        console.log(err);
-      })
-      .then(dispatch({ type: ITEM_CREATED }));
+    const res = await Axios(options);
+    await local.patch(`/items/${res.data._id}/image`, fd, imageOptions);
+    dispatch({ type: ITEM_CREATED, payload: res.data });
   };
 };
 
 export const editItem = item => {
   return async function(dispatch, getState) {
     const state = getState();
-    const Authorization = state.loginReducer.header.headers.Authorization;
+    const Authorization = state.loginReducer.header.Authorization;
     const id = state.itemsReducer.currentItem._id;
     const options = {
       headers: {
         Authorization
       },
-      data: item
+      data: item,
+      method: 'PATCH',
+      url: `http:localhost:3000/items/${id}`
     };
-    const res = await local.patch(`/items/${id}`, null, options);
+    await Axios(options);
     dispatch({ type: ITEM_UPDATED });
   };
 };
@@ -72,17 +69,20 @@ export const editItem = item => {
 export const editImage = image => {
   return async function(dispatch, getState) {
     const state = getState();
-    const Authorization = state.loginReducer.header.headers.Authorization;
+    const Authorization = state.loginReducer.header.Authorization;
     const current = state.itemsReducer.currentItem._id;
     const fd = new FormData();
     fd.append('image', image);
-    const imageOptions = {
+    const Options = {
       headers: {
         Authorization,
         'Content-Type': 'multipart/form-data'
-      }
+      },
+      method: 'PATCH',
+      url: `http:localhost:3000/items/${current}/image`,
+      data: fd
     };
-    await local.patch(`/items/${current}/image`, fd, imageOptions);
+    await Axios(Options);
     dispatch({ type: ITEM_UPDATED });
   };
 };
@@ -90,14 +90,15 @@ export const editImage = image => {
 export const deleteItem = item => {
   return async function(dispatch, getState) {
     const state = getState();
-    const header = {
+    const Authorization = state.loginReducer.header.Authorization;
+    const options = {
+      method: 'DELETE',
+      url: `http://localhost:3000/items/${item}`,
       headers: {
-        Authorization: state.loginReducer.header.headers.Authorization,
-        'Content-Type': 'application/json'
+        Authorization
       }
     };
-    const res = await local.delete(`/items/${item}`, header);
-    console.log(res);
+    Axios(options);
     dispatch({
       type: ITEM_DELETED,
       payload: item
