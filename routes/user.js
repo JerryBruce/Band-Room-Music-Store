@@ -17,6 +17,7 @@ const router = express.Router();
 // });
 
 router.post('/admin/login', async (req, res) => {
+  console.log(req.body);
   try {
     const user = await User.findByCredentials(
       req.body.username,
