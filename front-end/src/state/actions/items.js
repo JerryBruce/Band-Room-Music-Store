@@ -4,13 +4,13 @@ import {
   ITEM_UPDATED,
   ITEM_RECIEVED,
   ITEM_CREATED
-} from "./types";
-import { local } from "../../api";
-import Axios from "axios";
+} from './types';
+import { local } from '../../api';
+import Axios from 'axios';
 
 export const getItems = () => {
   return async function(dispatch) {
-    const res = await local.get("/items");
+    const res = await local.get('/items');
     dispatch({ type: ITEMS_RECIEVED, payload: res.data });
   };
 };
@@ -23,28 +23,33 @@ export const getDetails = item => {
 };
 
 export const createItem = (item, image) => {
-  return async function(dispatch, getState) {
+  return function(dispatch, getState) {
     const state = getState();
     const Authorization = state.loginReducer.header.headers.Authorization;
     const fd = new FormData();
-    fd.append("image", image);
+    fd.append('image', image);
     const options = {
       headers: {
         Authorization
       },
       data: item,
-      method: "POST",
-      url: "http://localhost:3000/items"
+      method: 'POST',
+      url: 'http://localhost:3000/items'
     };
     const imageOptions = {
       headers: {
         Authorization,
-        "Content-Type": "multipart/form-data"
+        'Content-Type': 'multipart/form-data'
       }
     };
-    const res = await Axios(options);
-    await local.patch(`/items/${res.data._id}/image`, fd, imageOptions);
-    dispatch({ type: ITEM_CREATED, payload: res.data });
+    Axios(options)
+      .then(response => {
+        local.patch(`/items/${response.data._id}/image`, fd, imageOptions);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+      .then(dispatch({ type: ITEM_CREATED }));
   };
 };
 
@@ -70,11 +75,11 @@ export const editImage = image => {
     const Authorization = state.loginReducer.header.headers.Authorization;
     const current = state.itemsReducer.currentItem._id;
     const fd = new FormData();
-    fd.append("image", image);
+    fd.append('image', image);
     const imageOptions = {
       headers: {
         Authorization,
-        "Content-Type": "multipart/form-data"
+        'Content-Type': 'multipart/form-data'
       }
     };
     await local.patch(`/items/${current}/image`, fd, imageOptions);
@@ -88,7 +93,7 @@ export const deleteItem = item => {
     const header = {
       headers: {
         Authorization: state.loginReducer.header.headers.Authorization,
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       }
     };
     const res = await local.delete(`/items/${item}`, header);
