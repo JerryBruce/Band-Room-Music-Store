@@ -12,9 +12,8 @@ router.post("/inquiry", (req, res) => {
       !data.email ||
       !data.first ||
       !data.last ||
-      !data.phone ||
-      !data.address ||
-      !data.message
+      !data.message ||
+      !data.subject
     ) {
       res.status(400).send("Please enter the required fields");
     }
