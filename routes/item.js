@@ -79,7 +79,7 @@ router.patch(
       .toBuffer();
 
     item.imageSm = small;
-    item.imageLrg - large;
+    item.imageLrg = large;
     await item.save();
     res.send();
   }
@@ -101,7 +101,7 @@ router.get('/items/:id/large', async (req, res) => {
     const item = await Item.findById(req.params.id);
 
     res.set('Content-Type', 'image/png');
-    res.send(item.imageMed);
+    res.send(item.imageLrg);
   } catch (e) {
     res.status(404).send();
   }
