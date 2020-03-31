@@ -1,21 +1,19 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import StoreItem from "./StoreItem";
-import StoreDetails from "./StoreDetails";
+import StoreItem from './StoreItem';
+import StoreDetails from './StoreDetails';
 
 const Store = props => {
   if (!props.storeOpen) {
     return (
-      <div className="store">
-        <div className="store-search">Store Search</div>
+      <div className='store'>
         <StoreItem />
-        <div className="store-page">Store Pages</div>
       </div>
     );
   } else {
     return (
-      <div className="store">
+      <div className='store'>
         <StoreDetails />
       </div>
     );
