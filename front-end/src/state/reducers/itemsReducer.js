@@ -2,12 +2,15 @@ import {
   ITEMS_RECIEVED,
   ITEM_RECIEVED,
   ITEM_CREATED,
-  ITEM_DELETED
-} from "../actions/types";
+  ITEM_DELETED,
+  CATEGORIES_SET
+} from '../actions/types';
+import { Component } from 'react';
 
 const itemsReducer = (
   state = {
     items: [],
+    categories: [],
     currentItem: null
   },
   action
@@ -17,6 +20,11 @@ const itemsReducer = (
       return {
         ...state,
         items: action.payload
+      };
+    case CATEGORIES_SET:
+      return {
+        ...state,
+        categories: action.payload
       };
     case ITEM_RECIEVED:
       return {

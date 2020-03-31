@@ -3,7 +3,8 @@ import {
   ITEM_DELETED,
   ITEM_UPDATED,
   ITEM_RECIEVED,
-  ITEM_CREATED
+  ITEM_CREATED,
+  CATEGORIES_SET
 } from './types';
 import { local } from '../../api';
 import Axios from 'axios';
@@ -11,7 +12,13 @@ import Axios from 'axios';
 export const getItems = () => {
   return async function(dispatch) {
     const res = await local.get('/items');
-    dispatch({ type: ITEMS_RECIEVED, payload: res.data });
+    await dispatch({ type: ITEMS_RECIEVED, payload: res.data });
+    const array = res.data.map(item => {
+      return item.product;
+    });
+    const reduced = new Set(array);
+    const categories = [...reduced];
+    dispatch({ type: CATEGORIES_SET, payload: categories });
   };
 };
 
