@@ -21,7 +21,7 @@ const itemSchema = new mongoose.Schema({
     trim: true
   },
   stock: {
-    type: String,
+    type: Number,
     required: true
   },
   description: {

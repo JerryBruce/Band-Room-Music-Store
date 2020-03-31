@@ -47,9 +47,7 @@ router.patch("/items/:id", auth, async (req, res) => {
 
 router.delete("/items/:id", auth, async (req, res) => {
   try {
-    const item = await Item.findOneAndDelete({
-      _id: req.params.id
-    });
+    const item = await Item.findOneAndDelete(req.params.id);
 
     if (!item) {
       res.status(404).send();
