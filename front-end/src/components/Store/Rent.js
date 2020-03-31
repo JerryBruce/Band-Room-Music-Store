@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import { toggleRent } from "../../state/actions/toggle";
-import { notify } from "../../state/actions/notify";
+import { toggleRent } from '../../state/actions/toggle';
+import { notify } from '../../state/actions/notify';
 
 class Rent extends React.Component {
   constructor() {
@@ -18,7 +18,8 @@ class Rent extends React.Component {
       phone: this.refs.phone.value,
       email: this.refs.email.value,
       address: this.refs.address.value,
-      message: this.refs.message.value
+      message: this.refs.message.value,
+      subject: `Inquiry for ${this.props.currentItem.name}`
     };
 
     await this.props.notify(inquiry);
@@ -26,63 +27,60 @@ class Rent extends React.Component {
   }
   render() {
     return (
-      <div className="inquiry f-co-c-sa">
+      <div className='inquiry f-co-c-sa'>
         <h1>Inquiry for {this.props.currentItem.name}</h1>
         <form
-          action="submit"
-          className="rental-form f-co-c-sa"
-          onSubmit={this.handleSubmit}
-        >
+          action='submit'
+          className='rental-form f-co-c-sa'
+          onSubmit={this.handleSubmit}>
           <input
-            className="form-input"
-            placeholder="First Name"
-            name="firstname"
-            type="text"
-            ref="first"
+            className='form-input'
+            placeholder='First Name'
+            name='firstname'
+            type='text'
+            ref='first'
           />
           <input
-            className="form-input"
-            placeholder="Last Name"
-            name="lastname"
-            type="text"
-            ref="last"
+            className='form-input'
+            placeholder='Last Name'
+            name='lastname'
+            type='text'
+            ref='last'
           />
           <input
-            className="form-input"
-            placeholder="Phone Number"
-            name="phone"
-            type="phone"
-            ref="phone"
+            className='form-input'
+            placeholder='Phone Number'
+            name='phone'
+            type='phone'
+            ref='phone'
           />
           <input
-            className="form-input"
-            placeholder="Email Address"
-            name="email"
-            type="email"
-            ref="email"
+            className='form-input'
+            placeholder='Email Address'
+            name='email'
+            type='email'
+            ref='email'
           />
           <input
-            className="form-input"
-            placeholder="Mailing Address"
-            name="address"
-            type="address"
-            ref="address"
+            className='form-input'
+            placeholder='Mailing Address'
+            name='address'
+            type='address'
+            ref='address'
           />
           <textarea
-            className="form-message"
-            placeholder="Inquiry Message"
-            name=""
-            id=""
-            cols="30"
-            rows="10"
-            ref="message"
-          ></textarea>
-          <div className="form-btns f-co-c-sb">
-            <button className="btn-long btn-green">Submit</button>
+            className='form-message'
+            placeholder='Inquiry Message'
+            name=''
+            id=''
+            cols='30'
+            rows='10'
+            ref='message'></textarea>
+          <div className='form-btns f-co-c-sb'>
+            <button className='btn-long btn-green'>Submit</button>
             <button
-              className="btn-long btn-blue"
-              onClick={() => this.props.toggleRent()}
-            >
+              className='btn-long btn-blue'
+              onClick={() => this.props.toggleRent()}>
               Cancel
             </button>
           </div>
