@@ -20,7 +20,7 @@ class Confirm extends Component {
     return (
       <div className='confirm fix-c'>
         <div className='confirm-body f-co-c-c'>
-          <p>Are You Sure?</p>
+          <p>Are you sure you want to delete {this.props.currentItem.name}</p>
           <div className='confirm-btn'>
             <button
               className='confirm-btn-del'

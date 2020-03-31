@@ -14,7 +14,7 @@ class CreateItem extends React.Component {
   async handleSubmit(e) {
     e.preventDefault();
     const item = {
-      product: this.refs.product.value,
+      product: this.refs.product.value.toLowerCase(),
       name: this.refs.name.value,
       brand: this.refs.brand.value,
       series: this.refs.series.value,

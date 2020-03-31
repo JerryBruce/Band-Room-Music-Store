@@ -1,9 +1,9 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import EditImage from "./EditImage";
-import { toggleEdit, toggleEditImage } from "../../state/actions/toggle";
-import { editItem, getItems } from "../../state/actions/items";
+import EditImage from './EditImage';
+import { toggleEdit, toggleEditImage } from '../../state/actions/toggle';
+import { editItem, getItems } from '../../state/actions/items';
 
 class EditItem extends React.Component {
   constructor() {
@@ -14,7 +14,7 @@ class EditItem extends React.Component {
   async handleSubmit(e) {
     e.preventDefault();
     const item = {
-      product: this.refs.product.value,
+      product: this.refs.product.value.toLowerCase(),
       name: this.refs.name.value,
       brand: this.refs.brand.value,
       series: this.refs.series.value,
@@ -32,83 +32,80 @@ class EditItem extends React.Component {
     const current = this.props.currentItem;
     if (!this.props.editImageOpen) {
       return (
-        <div className="create-item f-co-c-sa">
-          <h1 className="form-heading">Edit {current.name}</h1>
+        <div className='create-item f-co-c-sa'>
+          <h1 className='form-heading'>Edit {current.name}</h1>
           <form
-            className="form f-co-c-sa"
-            action="submit"
-            onSubmit={this.handleSubmit}
-          >
+            className='form f-co-c-sa'
+            action='submit'
+            onSubmit={this.handleSubmit}>
             <input
-              type="text"
-              className="form-input"
-              ref="product"
+              type='text'
+              className='form-input'
+              ref='product'
               placeholder={current.product}
               defaultValue={current.product}
             />
             <input
-              className="form-input"
-              type="text"
-              ref="name"
+              className='form-input'
+              type='text'
+              ref='name'
               placeholder={current.name}
               defaultValue={current.name}
             />
             <input
-              className="form-input"
-              type="text"
-              ref="brand"
+              className='form-input'
+              type='text'
+              ref='brand'
               placeholder={current.brand}
               defaultValue={current.brand}
             />
             <input
-              className="form-input"
-              type="text"
-              ref="series"
+              className='form-input'
+              type='text'
+              ref='series'
               placeholder={current.series}
               defaultValue={current.series}
             />
             <input
-              className="form-input"
-              type="number"
-              ref="stock"
+              className='form-input'
+              type='number'
+              ref='stock'
               placeholder={current.stock}
               defaultValue={current.stock}
             />
             <textarea
-              className="form-message"
-              type="text"
-              ref="description"
+              className='form-message'
+              type='text'
+              ref='description'
               placeholder={current.description}
               defaultValue={current.description}
             />
             <input
-              className="form-input"
-              type="number"
-              ref="rent"
+              className='form-input'
+              type='number'
+              ref='rent'
               placeholder={current.rent}
               defaultValue={current.rent}
             />
             <input
-              className="form-input"
-              type="number"
-              ref="buy"
+              className='form-input'
+              type='number'
+              ref='buy'
               placeholder={current.buy}
               defaultValue={current.buy}
             />
-            <div className="form-btns f-co-c-sb">
-              <button className="btn-long btn-green" type="submit">
+            <div className='form-btns f-co-c-sb'>
+              <button className='btn-long btn-green' type='submit'>
                 Submit
               </button>
               <button
-                className="btn-long btn-blue"
-                onClick={() => this.props.toggleEditImage()}
-              >
+                className='btn-long btn-blue'
+                onClick={() => this.props.toggleEditImage()}>
                 Change Item Image
               </button>
               <button
-                className="btn-long btn-blue"
-                onClick={() => this.props.toggleEdit()}
-              >
+                className='btn-long btn-blue'
+                onClick={() => this.props.toggleEdit()}>
                 Back to Dashboard
               </button>
             </div>

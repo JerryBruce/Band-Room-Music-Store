@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import EditItem from "./EditItem";
-import CreateItem from "./CreateItem";
-import Confirm from "./Confirm";
-import { logOut } from "../../state/actions/login";
+import EditItem from './EditItem';
+import CreateItem from './CreateItem';
+import Confirm from './Confirm';
+import { logOut } from '../../state/actions/login';
 import {
   toggleCreate,
   toggleConfirm,
   toggleEdit
-} from "../../state/actions/toggle";
-import { getItems, getDetails } from "../../state/actions/items";
+} from '../../state/actions/toggle';
+import { getItems, getDetails } from '../../state/actions/items';
 
 class Dash extends Component {
   constructor(props) {
@@ -35,104 +35,66 @@ class Dash extends Component {
   render() {
     const items = this.props.items.map(item => {
       return (
-        <div className="store-item f-co-c-sb" key={item._id}>
-          <h1 className="store-item-name js-c">{item.name}</h1>
+        <div className='store-item f-co-c-sb' key={item._id}>
+          <h1 className='store-item-name js-c'>{item.name}</h1>
           <img
             src={`http://localhost:3000/items/${item._id}/small`}
-            alt="item"
-            className="store-item-image"
+            alt='item'
+            className='store-item-image'
           />
 
-          <div className="store-item-details f-co-l-sa">
-            <p className="store-item-series">{item.series}</p>
-            <div className="store-item-price">
+          <div className='store-item-details f-co-l-sa'>
+            <p className='store-item-series'>{item.series}</p>
+            <div className='store-item-price'>
               As Low as
               <br />
-              <span className="red">${item.rent}/Month</span>
+              <span className='red'>${item.rent}/Month</span>
             </div>
-            <div className="store-item-stock">
-              <span className="green">In Stock</span>
+            <div className='store-item-stock'>
+              <span className='green'>In Stock</span>
             </div>
           </div>
-          <div className="item-btns f-co-c-sb">
+          <div className='item-btns f-co-c-sb'>
             <button
-              className="btn btn-black"
+              disabled={this.props.confirmOpen}
+              className='btn btn-black'
               value={item._id}
-              onClick={e => this.handleEdit(e)}
-            >
+              onClick={e => this.handleEdit(e)}>
               Edit Item
             </button>
             <button
-              className="btn btn-red"
+              disabled={this.props.confirmOpen}
+              className='btn btn-red'
               value={item._id}
-              onClick={e => this.handleDelete(e)}
-            >
+              onClick={e => this.handleDelete(e)}>
               Delete Item
             </button>
           </div>
         </div>
       );
     });
-    if (
-      !this.props.createOpen &&
-      !this.props.confirmOpen &&
-      !this.props.editOpen
-    ) {
+    if (!this.props.createOpen && !this.props.editOpen) {
       return (
-        <div className="dash f-co-c-sa">
-          <div className="dash-btns f-co-c-sa">
+        <div className='dash f-co-c-sa'>
+          {this.props.confirmOpen ? <Confirm /> : ''}
+          <div className='dash-btns f-co-c-sa'>
             <button
-              className="btn-long btn-black"
-              onClick={() => this.props.toggleCreate()}
-            >
+              className='btn-long btn-black'
+              onClick={() => this.props.toggleCreate()}>
               Add Item
             </button>
             <button
-              className="btn-long btn-black"
-              onClick={() => this.props.logOut()}
-            >
+              className='btn-long btn-black'
+              onClick={() => this.props.logOut()}>
               Logout
             </button>
           </div>
-          <div className="store-items if fw">{items}</div>
+          <div className='store-items if fw'>{items}</div>
         </div>
       );
-    } else if (
-      this.props.createOpen &&
-      !this.props.confirmOpen &&
-      !this.props.editOpen
-    ) {
+    } else if (this.props.createOpen && !this.props.editOpen) {
       return <CreateItem />;
-    } else if (
-      !this.props.createOpen &&
-      this.props.confirmOpen &&
-      !this.props.editOpen
-    ) {
-      return (
-        <div>
-          <Confirm />
-          <div className="dash f-co-c-sa">
-            <button
-              className="btn btn-blue"
-              onClick={() => this.props.toggleCreate()}
-            >
-              Add Item
-            </button>
-            <button
-              className="btn btn-blue"
-              onClick={() => this.props.logOut()}
-            >
-              Logout
-            </button>
-            <div className="if fw f-c-c">{items}</div>
-          </div>
-        </div>
-      );
-    } else if (
-      !this.props.createOpen &&
-      !this.props.confirmOpen &&
-      this.props.editOpen
-    ) {
+    } else if (!this.props.createOpen && this.props.editOpen) {
       return <EditItem />;
     } else return <h1>something went bad</h1>;
   }

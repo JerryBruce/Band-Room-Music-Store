@@ -4,7 +4,8 @@ import {
   ITEM_UPDATED,
   ITEM_RECIEVED,
   ITEM_CREATED,
-  CATEGORIES_SET
+  CATEGORIES_SET,
+  SET_CURRENT_CATEGORY
 } from './types';
 import { local } from '../../api';
 import Axios from 'axios';
@@ -14,7 +15,7 @@ export const getItems = () => {
     const res = await local.get('/items');
     await dispatch({ type: ITEMS_RECIEVED, payload: res.data });
     const array = res.data.map(item => {
-      return item.product;
+      return item.product.toLowerCase();
     });
     const reduced = new Set(array);
     const categories = [...reduced];
@@ -68,6 +69,7 @@ export const editItem = item => {
       method: 'PATCH',
       url: `http:localhost:3000/items/${id}`
     };
+    console.log(options);
     await Axios(options);
     dispatch({ type: ITEM_UPDATED });
   };
@@ -105,10 +107,17 @@ export const deleteItem = item => {
         Authorization
       }
     };
-    Axios(options);
+    await Axios(options);
     dispatch({
       type: ITEM_DELETED,
       payload: item
     });
+  };
+};
+
+export const setCurrentCategory = category => {
+  return {
+    type: SET_CURRENT_CATEGORY,
+    payload: category
   };
 };

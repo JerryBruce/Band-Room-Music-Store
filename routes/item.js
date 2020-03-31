@@ -29,6 +29,7 @@ router.get('/items', async (req, res) => {
 });
 
 router.patch('/items/:id', auth, async (req, res) => {
+  console.log(req.body);
   const updates = Object.keys(req.body);
 
   try {

@@ -3,41 +3,30 @@ import { connect } from 'react-redux';
 
 import StoreItem from './StoreItem';
 import StoreDetails from './StoreDetails';
-import { getItems } from '../../state/actions/items';
+import DropDown from './DropDown';
 
-class Store extends Component {
-  componentDidMount() {
-    this.props.getItems();
+const Store = props => {
+  if (!props.storeOpen) {
+    return (
+      <div className='store'>
+        <DropDown />
+        <StoreItem />
+      </div>
+    );
+  } else {
+    return (
+      <div className='store'>
+        <StoreDetails />
+      </div>
+    );
   }
-  render() {
-    const categories = this.props.items.filter(item => {
-      return item.product.includes('saxophone');
-    });
-    const data = categories.map(item => {
-      return <h1>{item.name}</h1>;
-    });
-    return <div className='categories'>{data}</div>;
-    // if (!props.storeOpen) {
-    //   return (
-    //     <div className='store'>
-    //       <StoreItem />
-    //     </div>
-    //   );
-    // } else {
-    //   return (
-    //     <div className='store'>
-    //       <StoreDetails />
-    //     </div>
-    //   );
-    // }
-  }
-}
+};
 
 const mapStateToProps = state => {
   return {
     storeOpen: state.toggleReducer.storeOpen,
-    items: state.itemsReducer.items
+    categories: state.itemsReducer.categories
   };
 };
 
-export default connect(mapStateToProps, { getItems })(Store);
+export default connect(mapStateToProps)(Store);

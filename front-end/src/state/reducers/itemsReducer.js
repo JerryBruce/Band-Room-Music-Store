@@ -3,7 +3,8 @@ import {
   ITEM_RECIEVED,
   ITEM_CREATED,
   ITEM_DELETED,
-  CATEGORIES_SET
+  CATEGORIES_SET,
+  SET_CURRENT_CATEGORY
 } from '../actions/types';
 import { Component } from 'react';
 
@@ -11,7 +12,8 @@ const itemsReducer = (
   state = {
     items: [],
     categories: [],
-    currentItem: null
+    currentItem: null,
+    currentCategory: null
   },
   action
 ) => {
@@ -25,6 +27,11 @@ const itemsReducer = (
       return {
         ...state,
         categories: action.payload
+      };
+    case SET_CURRENT_CATEGORY:
+      return {
+        ...state,
+        currentCategory: action.payload
       };
     case ITEM_RECIEVED:
       return {
