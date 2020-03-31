@@ -4,7 +4,7 @@ const keys = require('../config/keys');
 sgMail.setApiKey(keys.sendgridKey);
 
 const sendInquiryEmail = data => {
-  const { email, first, last, phone, address, message, subject } = data;
+  const { subject, email, first, last, phone, address, message } = data;
   sgMail.send({
     to: keys.email,
     from: email,
