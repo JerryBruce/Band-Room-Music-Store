@@ -36,11 +36,11 @@ const itemSchema = new mongoose.Schema({
     type: Buffer
   },
   rent: {
-    type: String,
+    type: Number,
     required: true
   },
   buy: {
-    type: String,
+    type: Number,
     required: false
   }
 });
