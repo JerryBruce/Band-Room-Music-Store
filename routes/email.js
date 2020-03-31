@@ -4,9 +4,8 @@ const { sendInquiryEmail } = require("../middleware/sendgrid");
 router = express.Router();
 
 router.post("/inquiry", (req, res) => {
-  console.log(req);
+  console.log(req.body);
   const data = { ...req.body };
-  const name = `${data.first} ${data.last}`;
 
   try {
     if (
@@ -19,7 +18,7 @@ router.post("/inquiry", (req, res) => {
     ) {
       res.status(400).send("Please enter the required fields");
     }
-    sendInquiryEmail(data.email, name, data.phone, data.address, data.message);
+    sendInquiryEmail(data);
 
     res.status(201).send("Email Sent");
   } catch (e) {

@@ -16,13 +16,14 @@ export class Home extends Component {
                 minima officia maxime. Velit, possimus?
               </p>
             </div>
-            <div className="cta f-co-c-sa">
+            <div className="f-co-c-sa">
               <button className="btn btn-red">
                 <Link to="/store">See Our Store</Link>
               </button>
             </div>
           </div>
         </div>
+        <div className="featured-items"></div>
       </div>
     );
   }

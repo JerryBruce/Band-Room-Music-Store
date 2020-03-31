@@ -31,3 +31,11 @@
 .btn-black {
   background-color: black;
 }
+
+@media screen and (min-width: 700px) {
+  .btn {
+    height: 5rem;
+    width: 18rem;
+    font-size: 1.6rem;
+  }
+}

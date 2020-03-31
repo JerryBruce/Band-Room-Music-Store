@@ -1,12 +1,12 @@
-const express = require("express");
-const sharp = require("sharp");
-const Item = require("../models/Item");
-const auth = require("../middleware/auth");
-const upload = require("../middleware/image");
+const express = require('express');
+const sharp = require('sharp');
+const Item = require('../models/Item');
+const auth = require('../middleware/auth');
+const upload = require('../middleware/image');
 
 const router = express.Router();
 
-router.post("/items", auth, async (req, res) => {
+router.post('/items', auth, async (req, res) => {
   const item = new Item({
     ...req.body
   });
@@ -19,7 +19,7 @@ router.post("/items", auth, async (req, res) => {
   }
 });
 
-router.get("/items", async (req, res) => {
+router.get('/items', async (req, res) => {
   try {
     const items = await Item.find({});
     res.send(items);
@@ -28,7 +28,7 @@ router.get("/items", async (req, res) => {
   }
 });
 
-router.patch("/items/:id", auth, async (req, res) => {
+router.patch('/items/:id', auth, async (req, res) => {
   const updates = Object.keys(req.body);
 
   try {
@@ -45,7 +45,7 @@ router.patch("/items/:id", auth, async (req, res) => {
   }
 });
 
-router.delete("/items/:id", auth, async (req, res) => {
+router.delete('/items/:id', auth, async (req, res) => {
   try {
     const item = await Item.findOneAndDelete(req.params.id);
 
@@ -61,9 +61,9 @@ router.delete("/items/:id", auth, async (req, res) => {
 
 // Image Routes
 router.patch(
-  "/items/:id/image",
+  '/items/:id/image',
   auth,
-  upload.single("image"),
+  upload.single('image'),
   async (req, res) => {
     const _id = req.params.id;
 
@@ -73,51 +73,35 @@ router.patch(
       .resize({ width: 150, height: 150 })
       .png()
       .toBuffer();
-    const medium = await sharp(req.file.buffer)
-      .resize({ width: 250, height: 250 })
-      .png()
-      .toBuffer();
     const large = await sharp(req.file.buffer)
-      .resize({ width: 450, height: 450 })
+      .resize({ width: 300, height: 300 })
       .png()
       .toBuffer();
 
     item.imageSm = small;
-    item.imageMed = medium;
-    item.imageLg = large;
+    item.imageLrg - large;
     await item.save();
     res.send();
   }
 );
 
-router.get("/items/:id/small", async (req, res) => {
+router.get('/items/:id/small', async (req, res) => {
   try {
     const item = await Item.findById(req.params.id);
 
-    res.set("Content-Type", "image/png");
+    res.set('Content-Type', 'image/png');
     res.send(item.imageSm);
   } catch (e) {
     res.status(404).send();
   }
 });
 
-router.get("/items/:id/medium", async (req, res) => {
+router.get('/items/:id/large', async (req, res) => {
   try {
     const item = await Item.findById(req.params.id);
 
-    res.set("Content-Type", "image/png");
+    res.set('Content-Type', 'image/png');
     res.send(item.imageMed);
-  } catch (e) {
-    res.status(404).send();
-  }
-});
-
-router.get("/items/:id/large", async (req, res) => {
-  try {
-    const item = await Item.findById(req.params.id);
-
-    res.set("Content-Type", "image/png");
-    res.send(item.imageLg);
   } catch (e) {
     res.status(404).send();
   }

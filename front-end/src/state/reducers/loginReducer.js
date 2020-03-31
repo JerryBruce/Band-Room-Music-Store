@@ -8,8 +8,7 @@ const loginReducer = (
   state = {
     token: null,
     header: null,
-    isAuthenticated: false,
-    tokens: null
+    isAuthenticated: false
   },
   action
 ) => {
@@ -17,9 +16,7 @@ const loginReducer = (
     case TOKEN_RECIEVED:
       return {
         ...state,
-        header: {
-          headers: { Authorization: `Bearer ${action.payload.token}` }
-        },
+        header: { Authorization: `Bearer ${action.payload.token}` },
         token: action.payload.token
       };
     case LOGIN_SUCCESS:
