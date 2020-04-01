@@ -1,19 +1,16 @@
 import {
   ITEMS_RECIEVED,
-  ITEM_RECIEVED,
+  SET_CURRENT_ITEM,
   ITEM_CREATED,
   ITEM_DELETED,
-  CATEGORIES_SET,
-  SET_CURRENT_CATEGORY
+  CATEGORIES_SET
 } from '../actions/types';
-import { Component } from 'react';
 
 const itemsReducer = (
   state = {
     items: [],
     categories: [],
-    currentItem: null,
-    currentCategory: null
+    currentItem: null
   },
   action
 ) => {
@@ -28,12 +25,7 @@ const itemsReducer = (
         ...state,
         categories: action.payload
       };
-    case SET_CURRENT_CATEGORY:
-      return {
-        ...state,
-        currentCategory: action.payload
-      };
-    case ITEM_RECIEVED:
+    case SET_CURRENT_ITEM:
       return {
         ...state,
         currentItem: state.items.find(item => item._id === action.payload)

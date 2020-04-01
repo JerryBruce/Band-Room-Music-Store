@@ -64,7 +64,7 @@ const mapStateToProps = state => {
     items: state.itemsReducer.items,
     currentItem: state.itemsReducer.currentItem,
     storeOpen: state.toggleReducer.storeOpen,
-    currentCategory: state.itemsReducer.currentCategory
+    currentCategory: state.pageReducer.currentCategory
   };
 };
 

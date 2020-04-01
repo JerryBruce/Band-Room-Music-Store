@@ -2,10 +2,9 @@ import {
   ITEMS_RECIEVED,
   ITEM_DELETED,
   ITEM_UPDATED,
-  ITEM_RECIEVED,
   ITEM_CREATED,
   CATEGORIES_SET,
-  SET_CURRENT_CATEGORY
+  SET_CURRENT_ITEM
 } from './types';
 import { local } from '../../api';
 import Axios from 'axios';
@@ -25,7 +24,7 @@ export const getItems = () => {
 
 export const getDetails = item => {
   return {
-    type: ITEM_RECIEVED,
+    type: SET_CURRENT_ITEM,
     payload: item
   };
 };
@@ -112,12 +111,5 @@ export const deleteItem = item => {
       type: ITEM_DELETED,
       payload: item
     });
-  };
-};
-
-export const setCurrentCategory = category => {
-  return {
-    type: SET_CURRENT_CATEGORY,
-    payload: category
   };
 };

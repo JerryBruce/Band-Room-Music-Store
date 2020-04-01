@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { setCurrentCategory } from '../../state/actions/items';
+import { setCurrentCategory } from '../../state/actions/pagination';
 
 class DropDown extends Component {
   setCurrentCategory(e) {
