@@ -10,17 +10,17 @@ export class Home extends Component {
         <div className='hero'>
           <div className='hero-content f-co-l-sa'>
             <div className='tag'>
-              <h2 className='tag-heading'>Tag Line</h2>
+              <h2 className='tag-heading'>Our Gurantee</h2>
               <p className='tag-text'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Necessitatibus, quos. Dicta cum beatae adipisci, aperiam eos,
-                voluptas nam dolore quaerat, totam iusto iure ab similique
-                minima officia maxime. Velit, possimus?
+                At the Band Room we gurantee that our prices and payment plans
+                won't be beaten. Our mission is to get affordable instruments in
+                the hands of priceless children. Contact us on our generous rent
+                to own options today.
               </p>
             </div>
             <div className='f-co-c-sa'>
               <button className='btn btn-red'>
-                <Link to='/store'>See Our Store</Link>
+                <Link to='/store'>Contact Us</Link>
               </button>
             </div>
           </div>

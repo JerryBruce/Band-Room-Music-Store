@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { rootReducer } from './reducers';
+import { getItems } from './actions/items';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
@@ -21,5 +22,7 @@ const store = createStore(
   persistedState,
   compose(applyMiddleware(thunk, logger))
 );
+
+store.subscribe(() => getItems());
 
 export default store;

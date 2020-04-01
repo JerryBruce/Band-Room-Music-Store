@@ -14,6 +14,7 @@ class CreateItem extends React.Component {
   async handleSubmit(e) {
     e.preventDefault();
     const item = {
+      category: this.refs.category.value,
       product: this.refs.product.value.toLowerCase(),
       name: this.refs.name.value,
       brand: this.refs.brand.value,
@@ -49,11 +50,29 @@ class CreateItem extends React.Component {
           action='submit'
           onSubmit={this.handleSubmit}
           encType='multipart/form-data'>
+          <label htmlFor='category'>Category</label>
+          <select
+            ref='category'
+            name='category'
+            id='category'
+            className='form-input'>
+            <option value='brass'>Brass</option>
+            <option value='woodwind'>Woodwind</option>
+            <option value='orchestra'>Orchestra</option>
+            <option value='percussion'>Percussion</option>
+            <option value='guitars'>Guitars</option>
+            <option value='accessories'>Accessories</option>
+            <option value='electronics'>Electronics</option>
+            <option value='loftware'>Software</option>
+            <option value='lighting'>Lighting</option>
+            <option value='apparel'>Apparel</option>
+            <option value='featured'>Featured</option>
+          </select>
           <input
             type='text'
             className='form-input'
             ref='product'
-            placeholder='product type'
+            placeholder='sub-category'
           />
           <input
             className='form-input'
