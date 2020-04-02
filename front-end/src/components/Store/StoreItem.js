@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getItems } from '../../state/actions/items';
-import { getDetails } from '../../state/actions/items';
+import { getItems, getDetails } from '../../state/actions/items';
+import { addToCart } from '../../state/actions/cart';
 import { toggleStore } from '../../state/actions/toggle';
 
 class StoreItem extends React.Component {
   constructor(props) {
     super(props);
     this.clickHandler = this.clickHandler.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
@@ -18,6 +19,11 @@ class StoreItem extends React.Component {
   clickHandler(e) {
     this.props.getDetails(e.target.value);
     this.props.toggleStore();
+  }
+
+  addToCart(e) {
+    const item = this.props.items.find(item => item._id === e.target.value);
+    this.props.addToCart(item);
   }
 
   render() {
@@ -51,6 +57,12 @@ class StoreItem extends React.Component {
               onClick={e => this.clickHandler(e)}>
               More Details
             </button>
+            <button
+              className='btn btn-red'
+              value={item._id}
+              onClick={e => this.addToCart(e)}>
+              Add To Cart
+            </button>
           </div>
         </div>
       );
@@ -71,5 +83,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   getItems,
   getDetails,
-  toggleStore
+  toggleStore,
+  addToCart
 })(StoreItem);

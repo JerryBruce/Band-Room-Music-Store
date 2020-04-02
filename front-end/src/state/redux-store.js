@@ -4,25 +4,35 @@ import { getItems } from './actions/items';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
-const loadFromSessionStorage = () => {
+const loadCart = () => {
   try {
-    const serializedState = sessionStorage.getItem('login');
-    if (serializedState === null) return undefined;
-    return JSON.parse(serializedState);
+    const cartState = localStorage.getItem('cart');
+    if (cartState === null) return undefined;
+    return JSON.parse(cartState);
   } catch (e) {
     console.log(e);
     return undefined;
   }
 };
 
-const persistedState = loadFromSessionStorage();
+const loadAuth = () => {
+  try {
+    const authState = sessionStorage.getItem('login');
+    if (authState === null) return undefined;
+    return JSON.parse(authState);
+  } catch (e) {
+    console.log(e);
+    return undefined;
+  }
+};
+
+const cart = loadCart();
+const auth = loadAuth();
 
 const store = createStore(
   rootReducer,
-  persistedState,
+  (cart, auth),
   compose(applyMiddleware(thunk, logger))
 );
-
-store.subscribe(() => getItems());
 
 export default store;

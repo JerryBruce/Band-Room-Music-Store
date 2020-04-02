@@ -32,3 +32,7 @@ export const TOGGLE_STORE = 'TOGGLE_STORE';
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 export const SET_PAGE_ITEMS = 'SET_PAGE_ITEMS';
 export const SET_PAGE_NUMBERS = 'SET_PAGE_NUMBERS';
+
+//Cart Types
+export const ADDED_TO_CART = 'ADDED_TO_CART';
+export const REMOVED_FROM_CART = 'REMOVED_FROM_CART';

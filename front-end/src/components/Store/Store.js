@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import StoreItem from './StoreItem';
 import StoreDetails from './StoreDetails';
 import DropDown from './DropDown';
+import Cart from './Cart';
 
 const Store = props => {
   if (!props.storeOpen) {
     return (
       <div className='store'>
+        <Cart />
         <DropDown />
         <StoreItem />
       </div>
