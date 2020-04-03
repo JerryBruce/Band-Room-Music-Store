@@ -7,8 +7,9 @@ import {
   TOGGLE_ALL,
   TOGGLE_CONFIRM,
   TOGGLE_EDIT,
-  TOGGLE_EDIT_IMAGE
-} from "./types";
+  TOGGLE_EDIT_IMAGE,
+  TOGGLE_CART
+} from './types';
 
 export const toggleAll = () => {
   return {
@@ -61,5 +62,11 @@ export const toggleEditImage = () => {
 export const toggleEdit = () => {
   return {
     type: TOGGLE_EDIT
+  };
+};
+
+export const toggleCart = () => {
+  return {
+    type: TOGGLE_CART
   };
 };

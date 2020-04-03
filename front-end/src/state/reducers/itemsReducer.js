@@ -35,14 +35,14 @@ const itemsReducer = (
         ...state,
         items: [...state.items, action.payload]
       };
-    // case ITEM_DELETED:
-    //   return {
-    //     ...state,
-    //     items: [
-    //       ...state.items.slice(0, action.payload),
-    //       ...state.items.slice(action.payload + 1)
-    //     ]
-    //   };
+    case ITEM_DELETED:
+      return {
+        ...state,
+        items: [
+          ...state.items.slice(0, action.payload),
+          ...state.items.slice(action.payload + 1)
+        ]
+      };
     default:
       return state;
   }

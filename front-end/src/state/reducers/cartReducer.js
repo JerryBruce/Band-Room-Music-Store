@@ -10,10 +10,7 @@ const cartReducer = (state = { cartItems: [] }, action) => {
     case REMOVED_FROM_CART:
       return {
         ...state,
-        cartItems: [
-          ...state,
-          state.cartItems.splice(state.cartItems.indexOf(action.payload), 1)
-        ]
+        cartItems: action.payload
       };
     default:
       return state;

@@ -20,6 +20,7 @@ export const SET_CURRENT_CATEGORY = 'SET_CURRENT_CATEGORY';
 //Toggle Types
 export const TOGGLE_ALL = 'TOGGLE_ALL';
 export const TOGGLE_BUY = 'TOGGLE_BUY';
+export const TOGGLE_CART = 'TOGGLE_CART';
 export const TOGGLE_CONFIRM = 'TOGGLE_CONFIRM';
 export const TOGGLE_CREATE = 'TOGGLE_CREATE';
 export const TOGGLE_EDIT = 'TOGGLE_EDIT';
@@ -35,4 +36,6 @@ export const SET_PAGE_NUMBERS = 'SET_PAGE_NUMBERS';
 
 //Cart Types
 export const ADDED_TO_CART = 'ADDED_TO_CART';
+export const DECREMENT_CART_ITEM = 'DECREMENT_CART_ITEM';
+export const INCREMENT_CART_ITEM = 'INCREMENT_CART_ITEM';
 export const REMOVED_FROM_CART = 'REMOVED_FROM_CART';

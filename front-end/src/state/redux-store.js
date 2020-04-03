@@ -1,8 +1,16 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { rootReducer } from './reducers';
-import { getItems } from './actions/items';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+
+export const setCart = state => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem('cart', serializedState);
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 const loadCart = () => {
   try {
@@ -29,9 +37,25 @@ const loadAuth = () => {
 const cart = loadCart();
 const auth = loadAuth();
 
+const combineState = () => {
+  try {
+    const persisted = {
+      loginReducer: auth.loginReducer,
+      cartReducer: cart
+    };
+    if (persisted === undefined) return (persisted = {});
+    return persisted;
+  } catch (e) {
+    console.log(e);
+    return undefined;
+  }
+};
+
+const state = combineState();
+
 const store = createStore(
   rootReducer,
-  (cart, auth),
+  state,
   compose(applyMiddleware(thunk, logger))
 );
 

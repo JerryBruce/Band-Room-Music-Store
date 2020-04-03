@@ -6,6 +6,7 @@ import { toggleNav, toggleCart } from '../../state/actions/toggle';
 
 export class Nav extends Component {
   render() {
+    console.log(this.props.cartItems.length);
     return (
       <div className='nav f-c-sb'>
         <div className='menu f-c-c' onClick={() => this.props.toggleNav()}>

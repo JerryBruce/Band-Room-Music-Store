@@ -14,12 +14,12 @@
       display: inline-block;
     }
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: -0.8rem;
     }
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 0.8rem;
     }
@@ -28,13 +28,30 @@
 .logo {
   height: 4rem;
   width: 4rem;
-  background-image: url("../../images/BR-LogoINV.svg");
+  background-image: url('../../images/BR-LogoINV.svg');
   background-size: 3.5rem;
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
 }
-
+.cart-count {
+  background-color: $secondary;
+  color: white;
+  height: 2rem;
+  width: 2rem;
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  border-radius: 50%;
+}
+.cart-img {
+  height: 4rem;
+  width: 4rem;
+  background-image: url('../../images/cart.svg');
+  background-size: 3.5rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
 .menu {
   position: relative;
   height: 3rem;
@@ -80,12 +97,12 @@
         display: inline-block;
       }
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: -0.8rem;
       }
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         top: 0.8rem;
       }
