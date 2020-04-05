@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+import { getItems } from '../../state/actions/items';
 import { addToCart, removeFromCart, decrement } from '../../state/actions/cart';
 
 class Cart extends Component {
+  componentDidMount() {
+    this.props.getItems();
+  }
+
   handleChange(e) {
+    console.log(e.target.value);
     const item = this.props.items.find(item => item._id === e.target.value);
+    console.log(item);
     if (e.target.name === 'increment') {
       this.props.addToCart(item);
     } else {
@@ -66,5 +74,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   addToCart,
   removeFromCart,
-  decrement
+  decrement,
+  getItems
 })(Cart);

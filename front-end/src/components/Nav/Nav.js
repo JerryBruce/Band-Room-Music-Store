@@ -13,12 +13,10 @@ export class Nav extends Component {
         </div>
         <div className='logo'></div>
         <div className='cart-img' onClick={() => this.props.toggleCart()}>
-          {this.props.cartItems.length > 0 ? (
+          {this.props.cartItems.length > 0 && (
             <div className='cart-count f-c-c'>
               {this.props.cartItems.length}
             </div>
-          ) : (
-            ''
           )}
         </div>
         {this.props.navOpen && <NavList />}
