@@ -22,15 +22,15 @@ class StoreItem extends React.Component {
   }
 
   addToCart(e) {
-    const item = this.props.items.find(item => item._id === e.target.value);
+    const item = this.props.items.find((item) => item._id === e.target.value);
     this.props.addToCart(item);
   }
 
   render() {
-    const categorized = this.props.items.filter(item => {
+    const categorized = this.props.items.filter((item) => {
       return item.product.includes(this.props.currentCategory);
     });
-    const items = categorized.map(item => {
+    const items = categorized.map((item) => {
       return (
         <div className='store-item f-co-c-sb' key={item._id}>
           <h1 className='store-item-name js-c'>{item.name}</h1>
@@ -50,17 +50,17 @@ class StoreItem extends React.Component {
               <span className='green'>In Stock</span>
             </div>
           </div>
-          <div className='store-item-btns'>
+          <div className='store-item-btns f-co-c-sb'>
             <button
               className='btn btn-black'
               value={item._id}
-              onClick={e => this.clickHandler(e)}>
+              onClick={(e) => this.clickHandler(e)}>
               More Details
             </button>
             <button
               className='btn btn-red'
               value={item._id}
-              onClick={e => this.addToCart(e)}>
+              onClick={(e) => this.addToCart(e)}>
               Add To Cart
             </button>
           </div>
@@ -71,12 +71,12 @@ class StoreItem extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     items: state.itemsReducer.items,
     currentItem: state.itemsReducer.currentItem,
     storeOpen: state.toggleReducer.storeOpen,
-    currentCategory: state.pageReducer.currentCategory
+    currentCategory: state.pageReducer.currentCategory,
   };
 };
 
@@ -84,5 +84,5 @@ export default connect(mapStateToProps, {
   getItems,
   getDetails,
   toggleStore,
-  addToCart
+  addToCart,
 })(StoreItem);

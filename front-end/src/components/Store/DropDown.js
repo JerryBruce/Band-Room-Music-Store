@@ -9,7 +9,7 @@ class DropDown extends Component {
     this.props.setCurrentCategory(e.target.value);
   }
   render() {
-    const category = this.props.categories.map(item => {
+    const category = this.props.categories.map((item) => {
       return (
         <option key={item} className='category-link' value={item}>
           {item}
@@ -22,8 +22,8 @@ class DropDown extends Component {
         <select
           name='categories'
           id='categories'
-          onChange={e => this.setCurrentCategory(e)}>
-          <option value=''></option>
+          onChange={(e) => this.setCurrentCategory(e)}>
+          <option value='featured'>Select</option>
           {category}
         </select>
       </div>
@@ -31,9 +31,9 @@ class DropDown extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    categories: state.itemsReducer.categories
+    categories: state.itemsReducer.categories,
   };
 };
 
