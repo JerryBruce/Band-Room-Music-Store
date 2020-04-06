@@ -19,7 +19,7 @@ class Rent extends React.Component {
       email: this.refs.email.value,
       address: this.refs.address.value,
       message: this.refs.message.value,
-      subject: `Inquiry for ${this.props.currentItem.name}`
+      subject: `Inquiry for ${this.props.currentItem.name}`,
     };
 
     await this.props.notify(inquiry);
@@ -77,9 +77,9 @@ class Rent extends React.Component {
             rows='10'
             ref='message'></textarea>
           <div className='form-btns f-co-c-sb'>
-            <button className='btn-long btn-green'>Submit</button>
+            <button className='btn-long btn-red'>Submit</button>
             <button
-              className='btn-long btn-blue'
+              className='btn-long btn-black'
               onClick={() => this.props.toggleRent()}>
               Cancel
             </button>
@@ -90,9 +90,9 @@ class Rent extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    currentItem: state.itemsReducer.currentItem
+    currentItem: state.itemsReducer.currentItem,
   };
 };
 

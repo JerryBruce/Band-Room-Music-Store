@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Rent from './Rent';
-import Buy from './Buy';
+import Buy from './Checkout';
 import { connect } from 'react-redux';
 import { toggleStore, toggleRent, toggleBuy } from '../../state/actions/toggle';
 import { addToCart } from '../../state/actions/cart';

@@ -1,27 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import StoreItem from './StoreItem';
 import StoreDetails from './StoreDetails';
 import DropDown from './DropDown';
-import Cart from './Cart';
 import { toggleCart } from '../../state/actions/toggle';
 
-const Store = props => {
+const Store = (props) => {
   if (!props.storeOpen) {
     return (
       <div className='store'>
         <DropDown />
         <StoreItem />
-        {props.cartOpen && (
-          <div className='cart-modal'>
-            <h1>Cart</h1>
-            <p>Cart Items</p>
-            <Cart />
-            <button>Check Out</button>
-            <button onClick={() => props.toggleCart()}>Close</button>
-          </div>
-        )}
+        <div className='b-c'>
+          <button className='btn-long btn-red'>
+            <Link to='/cart'>Go To Cart</Link>
+          </button>
+        </div>
       </div>
     );
   } else {
@@ -33,11 +29,11 @@ const Store = props => {
   }
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     storeOpen: state.toggleReducer.storeOpen,
     categories: state.itemsReducer.categories,
-    cartOpen: state.toggleReducer.cartOpen
+    cartOpen: state.toggleReducer.cartOpen,
   };
 };
 

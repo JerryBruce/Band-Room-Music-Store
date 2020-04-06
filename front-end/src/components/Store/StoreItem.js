@@ -16,14 +16,18 @@ class StoreItem extends React.Component {
     this.props.getItems();
   }
 
+  async addToCart(e) {
+    const item = await this.props.items.find(
+      (product) => product._id == e.target.value
+    );
+    item.inCart = false;
+    item.cartQuantity = 0;
+    this.props.addToCart(item);
+  }
+
   clickHandler(e) {
     this.props.getDetails(e.target.value);
     this.props.toggleStore();
-  }
-
-  addToCart(e) {
-    const item = this.props.items.find((item) => item._id === e.target.value);
-    this.props.addToCart(item);
   }
 
   render() {
@@ -54,13 +58,13 @@ class StoreItem extends React.Component {
             <button
               className='btn btn-black'
               value={item._id}
-              onClick={(e) => this.clickHandler(e)}>
+              onClick={this.clickHandler}>
               More Details
             </button>
             <button
               className='btn btn-red'
               value={item._id}
-              onClick={(e) => this.addToCart(e)}>
+              onClick={this.addToCart}>
               Add To Cart
             </button>
           </div>

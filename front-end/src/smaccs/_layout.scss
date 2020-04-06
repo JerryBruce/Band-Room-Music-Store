@@ -1,3 +1,9 @@
+.b-c {
+  display: block;
+  text-align: center;
+  margin: 2rem;
+}
+
 .f-c-sb {
   display: flex;
   align-items: center;
@@ -54,7 +60,6 @@
   align-items: center;
   justify-content: space-between;
 }
-
 .fw {
   flex-wrap: wrap;
 }
@@ -101,12 +106,6 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-}
-.a-c-t-n {
-  position: absolute;
-  left: 50%;
-  top: 6rem;
-  transform: translate(-50%, 0%);
 }
 .a-t-l {
   position: absolute;

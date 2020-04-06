@@ -13,10 +13,8 @@ export class Nav extends Component {
         </div>
         <div className='logo'></div>
         <div className='cart-img' onClick={() => this.props.toggleCart()}>
-          {this.props.cartItems.length > 0 && (
-            <div className='cart-count f-c-c'>
-              {this.props.cartItems.length}
-            </div>
+          {this.props.cartTotal > 0 && (
+            <div className='cart-count f-c-c'>{this.props.cartTotal}</div>
           )}
         </div>
         {this.props.navOpen && <NavList />}
@@ -25,10 +23,11 @@ export class Nav extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     navOpen: state.toggleReducer.navOpen,
-    cartItems: state.cartReducer.cartItems
+    cartItems: state.cartReducer.cartItems,
+    cartTotal: state.cartReducer.cartTotal,
   };
 };
 

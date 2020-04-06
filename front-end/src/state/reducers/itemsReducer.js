@@ -3,45 +3,46 @@ import {
   SET_CURRENT_ITEM,
   ITEM_CREATED,
   ITEM_DELETED,
-  CATEGORIES_SET
+  CATEGORIES_SET,
 } from '../actions/types';
 
 const itemsReducer = (
   state = {
     items: [],
     categories: [],
-    currentItem: null
+    currentItem: null,
   },
   action
 ) => {
   switch (action.type) {
     case ITEMS_RECIEVED:
+      console.log(action.payload);
       return {
         ...state,
-        items: action.payload
+        items: action.payload,
       };
     case CATEGORIES_SET:
       return {
         ...state,
-        categories: action.payload
+        categories: action.payload,
       };
     case SET_CURRENT_ITEM:
       return {
         ...state,
-        currentItem: state.items.find(item => item._id === action.payload)
+        currentItem: state.items.find((item) => item._id === action.payload),
       };
     case ITEM_CREATED:
       return {
         ...state,
-        items: [...state.items, action.payload]
+        items: [...state.items, action.payload],
       };
     case ITEM_DELETED:
       return {
         ...state,
         items: [
           ...state.items.slice(0, action.payload),
-          ...state.items.slice(action.payload + 1)
-        ]
+          ...state.items.slice(action.payload + 1),
+        ],
       };
     default:
       return state;

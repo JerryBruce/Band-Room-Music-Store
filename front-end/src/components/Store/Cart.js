@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { getItems } from '../../state/actions/items';
 import { addToCart, removeFromCart, decrement } from '../../state/actions/cart';
@@ -10,28 +11,26 @@ class Cart extends Component {
   }
 
   handleChange(e) {
-    console.log(e.target.value);
-    const item = this.props.items.find(item => item._id === e.target.value);
-    console.log(item);
     if (e.target.name === 'increment') {
-      this.props.addToCart(item);
+      this.props.addToCart();
     } else {
-      this.props.decrement(item);
+      this.props.decrement();
     }
   }
 
   render() {
     return (
       <div className='cart'>
-        {this.props.cartItems.length === 0 ? (
+        <h1>Cart</h1>
+        {this.props.cartTotal === 0 ? (
           'Cart is empty'
         ) : (
-          <div> you have {this.props.cartItems.length} items in cart</div>
+          <div> you have {this.props.cartTotal} items in cart</div>
         )}
-        {this.props.cartItems.length > 0 && (
+        {this.props.cartTotal > 0 && (
           <div>
             <ul>
-              {this.props.cartItems.map(item => (
+              {this.props.cartItems.map((item) => (
                 <li key={item._id}>
                   <p className='cart-item-name'>
                     {item.name} x {item.count}
@@ -39,35 +38,44 @@ class Cart extends Component {
                   <button
                     className='btn-red'
                     value={item._id}
-                    onClick={e => this.props.removeFromCart(e.target.value)}>
+                    onClick={(e) => this.props.removeFromCart(e.target.value)}>
                     X
                   </button>
                   <button
-                    value={item._id}
                     name='increment'
-                    onClick={e => this.handleChange(e)}>
+                    onClick={(e) => this.handleChange(e)}>
                     +
                   </button>
                   <button
-                    value={item._id}
                     name='decrement'
-                    onClick={e => this.handleChange(e)}>
+                    onClick={(e) => this.handleChange(e)}>
                     -
                   </button>
                 </li>
               ))}
             </ul>
+            <div className='b-c'>
+              <button className='btn btn-red'>
+                <Link to='/checkout'>Check Out</Link>
+              </button>
+            </div>
           </div>
         )}
+        <div className='b-c'>
+          <button className='btn btn-black'>
+            <Link to='/Store'>Close</Link>
+          </button>
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
+    cartTotal: state.cartReducer.cartTotal,
+    items: state.itemsReducer.items,
     cartItems: state.cartReducer.cartItems,
-    items: state.itemsReducer.items
   };
 };
 
@@ -75,5 +83,5 @@ export default connect(mapStateToProps, {
   addToCart,
   removeFromCart,
   decrement,
-  getItems
+  getItems,
 })(Cart);

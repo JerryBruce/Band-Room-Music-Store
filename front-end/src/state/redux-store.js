@@ -3,7 +3,9 @@ import { rootReducer } from './reducers';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
-export const setCart = state => {
+import { initialState } from './reducers/cartReducer';
+
+export const setCart = (state) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('cart', serializedState);
@@ -16,7 +18,7 @@ const loadCart = () => {
   try {
     const cartState = localStorage.getItem('cart');
     if (cartState === null || undefined)
-      return { cartReducer: { cartItems: [] } };
+      return { cartReducer: { initialState } };
     console.log(cartState);
     return JSON.parse(cartState);
   } catch (e) {
@@ -44,7 +46,7 @@ const auth = loadAuth();
 const combineState = () => {
   let persisted = {
     loginReducer: auth.loginReducer,
-    cartReducer: cart.cartReducer
+    cartReducer: cart.cartReducer,
   };
   if (persisted === undefined) {
     return (persisted = {});
