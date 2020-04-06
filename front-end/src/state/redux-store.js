@@ -18,7 +18,13 @@ const loadCart = () => {
   try {
     const cartState = localStorage.getItem('cart');
     if (cartState === null || undefined)
-      return { cartReducer: { initialState } };
+      return {
+        cartReducer: {
+          cartItems: initialState.cartItems,
+          cartTotal: initialState.cartTotal,
+          cartCost: initialState.cartCost,
+        },
+      };
     console.log(cartState);
     return JSON.parse(cartState);
   } catch (e) {

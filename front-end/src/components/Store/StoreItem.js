@@ -21,7 +21,7 @@ class StoreItem extends React.Component {
       (product) => product._id == e.target.value
     );
     item.inCart = false;
-    item.cartQuantity = 0;
+    item.cartQuantity = 1;
     this.props.addToCart(item);
   }
 

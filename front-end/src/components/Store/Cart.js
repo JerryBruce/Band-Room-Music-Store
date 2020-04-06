@@ -23,11 +23,11 @@ class Cart extends Component {
       <div className='cart'>
         <h1>Cart</h1>
         {this.props.cartTotal === 0 ? (
-          'Cart is empty'
+          <h3>Cart Is Empty</h3>
         ) : (
           <div> you have {this.props.cartTotal} items in cart</div>
         )}
-        {this.props.cartTotal > 0 && (
+        {this.props.cartTotal != 0 && (
           <div>
             <ul>
               {this.props.cartItems.map((item) => (
@@ -63,7 +63,7 @@ class Cart extends Component {
         )}
         <div className='b-c'>
           <button className='btn btn-black'>
-            <Link to='/Store'>Close</Link>
+            <Link to='/'>Close</Link>
           </button>
         </div>
       </div>

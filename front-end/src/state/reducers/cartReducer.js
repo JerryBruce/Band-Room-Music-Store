@@ -14,9 +14,6 @@ export const initialState = {
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADDED_TO_CART:
-      action.payload.inCart = true;
-      action.payload.cartQuantity++;
-      console.log(action.payload);
       return {
         ...state,
         cartItems: [...state.cartItems, action.payload],
@@ -30,8 +27,7 @@ const cartReducer = (state = initialState, action) => {
     case INCREMENT_CART_ITEM:
       return {
         ...state,
-        cartTotal: state.cartTotal + 1,
-        // cartItems:
+        cartItems: state.cartItems.splice(action.index, 1, action.payload),
       };
     case DECREMENT_CART_ITEM:
       return {

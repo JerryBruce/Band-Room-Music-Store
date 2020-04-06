@@ -6,8 +6,18 @@ import {
 } from './types';
 
 export const addToCart = (item) => {
-  return function (dispatch) {
-    dispatch({ type: ADDED_TO_CART, payload: item });
+  return function (dispatch, getState) {
+    const state = getState();
+    const cartItems = state.cartReducer.cartItems;
+    if (cartItems.includes(item)) {
+      for (let i = 0; i < cartItems.length; i++) {
+        if (cartItems[i]._id === item._id) {
+          console.log('item already in cart');
+        }
+      }
+    } else {
+      dispatch({ type: ADDED_TO_CART, payload: item });
+    }
   };
 };
 

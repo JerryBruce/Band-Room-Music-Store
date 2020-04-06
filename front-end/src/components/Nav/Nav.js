@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import NavList from './NavList';
 import { toggleNav, toggleCart } from '../../state/actions/toggle';
@@ -12,11 +13,13 @@ export class Nav extends Component {
           <div className='nav-icon'></div>
         </div>
         <div className='logo'></div>
-        <div className='cart-img' onClick={() => this.props.toggleCart()}>
-          {this.props.cartTotal > 0 && (
-            <div className='cart-count f-c-c'>{this.props.cartTotal}</div>
-          )}
-        </div>
+        <Link to='/cart'>
+          <div className='cart-img'>
+            {this.props.cartTotal > 0 && (
+              <div className='cart-count f-c-c'>{this.props.cartTotal}</div>
+            )}
+          </div>
+        </Link>
         {this.props.navOpen && <NavList />}
       </div>
     );
