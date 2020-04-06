@@ -5,7 +5,7 @@ import logger from 'redux-logger';
 
 import { initialState } from './reducers/cartReducer';
 
-export const setCart = (state) => {
+const setCart = (state) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('cart', serializedState);

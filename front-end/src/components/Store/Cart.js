@@ -3,20 +3,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getItems } from '../../state/actions/items';
-import { addToCart, removeFromCart, decrement } from '../../state/actions/cart';
+import { addToCart, removeFromCart } from '../../state/actions/cart';
 
 class Cart extends Component {
   componentDidMount() {
     this.props.getItems();
   }
 
-  handleChange(e) {
-    if (e.target.name === 'increment') {
-      this.props.addToCart();
-    } else {
-      this.props.decrement();
-    }
-  }
+  handleChange(e) {}
 
   render() {
     return (
@@ -63,7 +57,7 @@ class Cart extends Component {
         )}
         <div className='b-c'>
           <button className='btn btn-black'>
-            <Link to='/'>Close</Link>
+            <Link to='/'>Continue Shopping</Link>
           </button>
         </div>
       </div>
@@ -82,6 +76,5 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   addToCart,
   removeFromCart,
-  decrement,
   getItems,
 })(Cart);

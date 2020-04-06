@@ -1,9 +1,4 @@
-import {
-  ADDED_TO_CART,
-  REMOVED_FROM_CART,
-  INCREMENT_CART_ITEM,
-  DECREMENT_CART_ITEM,
-} from '../actions/types';
+import { ADDED_TO_CART, REMOVED_FROM_CART } from '../actions/types';
 
 export const initialState = {
   cartItems: [],
@@ -23,15 +18,6 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cartItems: action.payload,
-      };
-    case INCREMENT_CART_ITEM:
-      return {
-        ...state,
-        cartItems: state.cartItems.splice(action.index, 1, action.payload),
-      };
-    case DECREMENT_CART_ITEM:
-      return {
-        ...state,
         cartTotal: state.cartTotal - 1,
       };
     default:

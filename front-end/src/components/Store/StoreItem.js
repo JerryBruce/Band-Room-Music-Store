@@ -20,7 +20,6 @@ class StoreItem extends React.Component {
     const item = await this.props.items.find(
       (product) => product._id == e.target.value
     );
-    item.inCart = false;
     item.cartQuantity = 1;
     this.props.addToCart(item);
   }
@@ -71,7 +70,11 @@ class StoreItem extends React.Component {
         </div>
       );
     });
-    return <div className='store-items if fw'>{items}</div>;
+    return this.props.isLoading ? (
+      <h1>Loading...</h1>
+    ) : (
+      <div className='store-items if fw'>{items}</div>
+    );
   }
 }
 
@@ -81,6 +84,7 @@ const mapStateToProps = (state) => {
     currentItem: state.itemsReducer.currentItem,
     storeOpen: state.toggleReducer.storeOpen,
     currentCategory: state.pageReducer.currentCategory,
+    isLoading: state.itemsReducer.isLoading,
   };
 };
 

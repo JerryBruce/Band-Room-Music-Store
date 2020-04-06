@@ -1,32 +1,21 @@
-import {
-  ADDED_TO_CART,
-  REMOVED_FROM_CART,
-  INCREMENT_CART_ITEM,
-  DECREMENT_CART_ITEM,
-} from './types';
+import { ADDED_TO_CART, REMOVED_FROM_CART } from './types';
 
 export const addToCart = (item) => {
   return function (dispatch, getState) {
     const state = getState();
     const cartItems = state.cartReducer.cartItems;
-    if (cartItems.includes(item)) {
-      for (let i = 0; i < cartItems.length; i++) {
-        if (cartItems[i]._id === item._id) {
-          console.log('item already in cart');
-        }
-      }
-    } else {
+    console.log(cartItems.length);
+    if (cartItems.length === 0) {
       dispatch({ type: ADDED_TO_CART, payload: item });
     }
-  };
-};
-
-export const decrement = (item) => {
-  return function (dispatch) {
-    if (item.count > 1) {
-      item.count--;
+    for (let i = 0; i < cartItems.length; i++) {
+      if (cartItems[i]._id === item._id) {
+        console.log('item already in cart');
+      } else if (!cartItems.includes(item)) {
+        console.log('im the culprit');
+        dispatch({ type: ADDED_TO_CART, payload: item });
+      }
     }
-    dispatch({ type: DECREMENT_CART_ITEM });
   };
 };
 

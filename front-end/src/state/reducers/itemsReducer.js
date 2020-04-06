@@ -4,6 +4,7 @@ import {
   ITEM_CREATED,
   ITEM_DELETED,
   CATEGORIES_SET,
+  ITEMS_LOADING,
 } from '../actions/types';
 
 const itemsReducer = (
@@ -11,6 +12,7 @@ const itemsReducer = (
     items: [],
     categories: [],
     currentItem: null,
+    isLoading: null,
   },
   action
 ) => {
@@ -43,6 +45,11 @@ const itemsReducer = (
           ...state.items.slice(0, action.payload),
           ...state.items.slice(action.payload + 1),
         ],
+      };
+    case ITEMS_LOADING:
+      return {
+        ...state,
+        isLoading: action.payload,
       };
     default:
       return state;

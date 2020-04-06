@@ -9,6 +9,7 @@ export const ITEM_DELETED = 'ITEM_DELETED';
 export const ITEMS_RECIEVED = 'ITEMS_RECIEVED';
 export const ITEM_UPDATED = 'ITEM_UPDATED';
 export const SET_CURRENT_ITEM = 'SET_CURRENT_ITEM';
+export const ITEMS_LOADING = 'ITEMS_LOADING';
 
 //Notification Types
 export const NOTIFICATION_SENT = 'NOTIFICATION_SENT';
